@@ -6,9 +6,16 @@
   "author": "Martin Nuc <martin@nuc.cz>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["client", "server", "shared"],
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
   "scripts": {
     "server": "yarn workspace stfu-and-click-server",
     "client": "yarn workspace stfu-and-click-client"
+  },
+  "devDependencies": {
+    "prettier": "2.0.4"
   }
 }
