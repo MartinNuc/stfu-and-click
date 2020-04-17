@@ -50,6 +50,12 @@ Response:
 }
 ```
 
+### Commands
+
+`yarn server start` to start server
+
+`yarn server build` to build server to `server/dist` folder
+
 ## Client
 
 TBD
