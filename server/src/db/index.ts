@@ -33,7 +33,7 @@ export function registerNewClick(click: ClickRecord) {
 export function incrementExistingClick(click: ClickRecord) {
   const existingClick = clicks.find((item) => item.session === click.session);
   if (!existingClick) {
-    throw new Error('Click was not found.');
+    throw new Error(`Click record for user session ${click.session} was not found.`);
   }
   existingClick.clicks++;
 }
