@@ -21,3 +21,7 @@ See [client's README.md](./client/README.md)
 ## Shared
 
 Shared module contains Typescript models which are shared between client and server for API.
+
+### Commands
+
+`yarn shared compile` to verify that shared modules is compilable

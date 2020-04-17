@@ -12,8 +12,9 @@
     "shared"
   ],
   "scripts": {
+    "client": "yarn workspace stfu-and-click-client",
     "server": "yarn workspace stfu-and-click-server",
-    "client": "yarn workspace stfu-and-click-client"
+    "shared": "yarn workspace stfu-and-click-shared"
   },
   "devDependencies": {
     "prettier": "2.0.4"

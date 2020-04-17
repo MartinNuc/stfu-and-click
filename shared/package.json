@@ -4,5 +4,8 @@
   "description": "Shared module for stfu-and-click interview challenge",
   "author": "Martin Nuc <martin@nuc.cz>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "compile": "tsc"
+  }
 }
