@@ -1,0 +1,10 @@
+{
+  "name": "stfu-and-click",
+  "version": "1.0.0",
+  "description": "Interview challenge for AppLifting",
+  "repository": "https://github.com/MartinNuc/stfu-and-click.git",
+  "author": "Martin Nuc <martin@nuc.cz>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["client", "server", "shared"]
+}

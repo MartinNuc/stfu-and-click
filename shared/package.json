@@ -1,0 +1,8 @@
+{
+  "name": "stfu-and-click-shared",
+  "version": "1.0.0",
+  "description": "Shared module for stfu-and-click interview challenge",
+  "author": "Martin Nuc <martin@nuc.cz>",
+  "license": "MIT",
+  "private": true
+}

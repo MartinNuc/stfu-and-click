@@ -1,0 +1,12 @@
+{
+  "name": "stfu-and-click-server",
+  "version": "1.0.0",
+  "description": "Server for stfu-and-click interview challenge",
+  "main": "dist/index.js",
+  "author": "Martin Nuc <martin@nuc.cz>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "typescript": "3.8.3"
+  }
+}
