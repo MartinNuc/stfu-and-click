@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
   const click = req.body as ClickRequest;
-  registerClick(click)
+  registerClick(click);
+
   const mySummary = getUsersSummary(click.session);
   res.json(mySummary);
 });

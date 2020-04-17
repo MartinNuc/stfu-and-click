@@ -2,7 +2,7 @@ export type ClickRecord = {
   team: string;
   session: string;
   clicks: number;
-}
+};
 
 export const clicks: ClickRecord[] = [
   {
