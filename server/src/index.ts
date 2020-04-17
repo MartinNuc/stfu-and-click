@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import bodyParser from 'body-parser';
 
 import logger, { LoggerStream } from './utils/logger';
 
@@ -9,6 +10,7 @@ import ClickRoute from './routes/click';
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
 app.use(morgan('tiny', { stream: new LoggerStream() }));
 
 app.use('/api/v1/leaderboard', LeaderboardRoute);
