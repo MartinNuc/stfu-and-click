@@ -16,7 +16,7 @@ See [server's README.md](./server/README.md)
 
 ## Client
 
-TBD
+See [client's README.md](./client/README.md)
 
 ## Shared
 
