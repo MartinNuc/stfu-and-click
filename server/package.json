@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
+    "coverage": "jest --collectCoverage",
     "start": "tsc && node dist/index.js",
     "test": "jest"
   },
