@@ -4,7 +4,7 @@ export type ClickRecord = {
   clicks: number;
 };
 
-export const clicks: ClickRecord[] = [
+const clicks: ClickRecord[] = [
   {
     team: 'applifting',
     session: 'abc123',
@@ -21,3 +21,19 @@ export const clicks: ClickRecord[] = [
     clicks: 5,
   },
 ];
+
+export function getAllClickRecords(): ClickRecord[] {
+  return clicks.slice();
+}
+
+export function registerNewClick(click: ClickRecord) {
+  clicks.push(click);
+}
+
+export function incrementExistingClick(click: ClickRecord) {
+  const existingClick = clicks.find((item) => item.session === click.session);
+  if (!existingClick) {
+    throw new Error('Click was not found.');
+  }
+  existingClick.clicks++;
+}

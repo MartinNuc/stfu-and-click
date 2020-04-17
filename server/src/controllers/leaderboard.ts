@@ -1,8 +1,9 @@
 import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
-import { clicks, ClickRecord } from './../db/index';
+import { ClickRecord, getAllClickRecords } from './../db/index';
 
 export function getAll(): LeaderboardEntry[] {
   // aggregate clicks by team
+  const clicks = getAllClickRecords();
   const aggregatedClicksMap = clicks.reduce((acc, click) => {
     const teamsCurrentClicks = acc.get(click.team);
     if (typeof teamsCurrentClicks === 'undefined') {
@@ -18,7 +19,7 @@ export function getAll(): LeaderboardEntry[] {
 
   const aggregatedClicks = Array.from(aggregatedClicksMap.values());
   aggregatedClicks.sort((a, b) => b.clicks - a.clicks);
-  
+
   return aggregatedClicks.map((click, index) => ({
     clicks: click.clicks,
     team: click.team,

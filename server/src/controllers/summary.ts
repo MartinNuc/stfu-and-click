@@ -1,8 +1,9 @@
 import { ClickResponse } from 'stfu-and-click-shared/src/click';
-import { clicks, ClickRecord } from './../db/index';
+import { ClickRecord, getAllClickRecords } from './../db/index';
 import { NotFoundError } from '../errors/not-found';
 
 export function getUsersSummary(session: string): ClickResponse {
+  const clicks = getAllClickRecords();
   const usersClickRecord = findClickRecordBySession(clicks, session);
   if (!usersClickRecord) {
     throw new NotFoundError(`No click record for given session ${session}`);
