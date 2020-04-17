@@ -6,11 +6,17 @@
   "author": "Martin Nuc <martin@nuc.cz>",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "client",
-    "server",
-    "shared"
-  ],
+  "workspaces": {
+    "packages": [
+      "client",
+      "server",
+      "shared"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/jest/**"
+    ]
+  },
   "scripts": {
     "client": "yarn workspace stfu-and-click-client",
     "server": "yarn workspace stfu-and-click-server",
