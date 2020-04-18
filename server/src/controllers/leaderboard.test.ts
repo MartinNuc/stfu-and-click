@@ -5,7 +5,7 @@ import { getAll } from './leaderboard';
 jest.mock('../datasource');
 const mockedDb = mocked(datasource, true);
 
-describe('LeaderboardController', () => {
+describe('Unit:LeaderboardController', () => {
   jest.spyOn(mockedDb, 'getAllTeamsScore').mockResolvedValue([
     {
       team: 'second',

@@ -7,7 +7,7 @@ import { getUserSummary } from './summary';
 
 const mockedDb = mocked(datasource, true);
 
-describe('SummaryController', () => {
+describe('Unit:SummaryController', () => {
   it(`should fetch user and team score from DB for executed click`, async () => {
     jest.spyOn(mockedDb, 'getUserScore').mockResolvedValue(10);
     jest.spyOn(mockedDb, 'getTeamScore').mockResolvedValue(20);

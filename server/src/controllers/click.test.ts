@@ -7,7 +7,7 @@ import { registerClick } from './click';
 
 const mockedDb = mocked(datasource, true);
 
-describe('ClickController', () => {
+describe('Unit:ClickController', () => {
   it('should pass the click to the data source', async () => {
     jest.spyOn(mockedDb, 'registerClick');
     const click: ClickRequest = {

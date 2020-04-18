@@ -7,7 +7,7 @@ const set = promisify(redis.set).bind(redis);
 const zscore = promisify(redis.zscore).bind(redis);
 const zincrby = promisify(redis.zincrby).bind(redis);
 
-describe('Redis datastore test', () => {
+describe('Integration:Redis datastore test', () => {
   beforeEach((done) => {
     redis.flushall(done);
   });

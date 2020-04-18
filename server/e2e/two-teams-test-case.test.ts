@@ -3,7 +3,7 @@ import app from '../src/server';
 import _ from '../src/datasource';
 import redis from '../src/db/redis';
 
-describe('Stfu and click button test', () => {
+describe('REST:stfu and click button test', () => {
   beforeEach((done) => {
     redis.flushall(done);
   });

@@ -1,6 +1,6 @@
 import { makeTuples } from './make-tuples';
 
-describe('makeTuples', () => {
+describe('Unit:makeTuples', () => {
   it('should make tuples of even array', () => {
     const input = [1, 2, 3, 4];
     const expected = [
