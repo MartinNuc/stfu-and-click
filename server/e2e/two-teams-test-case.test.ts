@@ -8,6 +8,10 @@ describe('REST:stfu and click button test', () => {
     redis.flushall(done);
   });
 
+  afterAll((done) => {
+    redis.quit(done);
+  });
+
   it('should allow multiple players to compete', async () => {
     await request(app).post('/api/v1/click').send({
       team: 'applifting',

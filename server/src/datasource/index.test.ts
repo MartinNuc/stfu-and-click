@@ -12,6 +12,10 @@ describe('Integration:Redis datastore test', () => {
     redis.flushall(done);
   });
 
+  afterAll((done) => {
+    redis.quit(done);
+  });
+
   it('should increment score for a single user', async () => {
     redisDatastore.registerClick({
       session: 'abc123',
