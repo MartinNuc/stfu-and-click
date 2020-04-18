@@ -50,3 +50,5 @@ It uses external Redis cache to store data.
 Team score is stored in a sorted set called `teams`. The score of sorted set is number of team's clicks. The value is team name.
 
 User's score is stored as a simple number with key `user:<session>`.
+
+Data are not normalized. Storing them normalized in Redis would mean to store data in hashes and use only references in sorted set which I considered overkill but would be probably a better design.

@@ -6,7 +6,9 @@ import { DataSource } from '../datasource.interface';
 import { User } from '../../controllers/summary';
 
 /**
- * This fake data source is mainly used for REST tests (see route tests)
+ * This fake data source is currently not used. 
+ * 
+ * The reason is that supertest spawns its own express instance on random port and mocks don't work there
  */
 class InMemoryDataSource implements DataSource {
   teamClicks: TeamClickRecord[] = [];
