@@ -16,6 +16,8 @@ See [server's README.md](./server/README.md)
 
 `yarn server build` to build server to `server/dist` folder
 
+`yarn server test` to run tests (local redis must be running for e2e REST tests)
+
 ## Client
 
 See [client's README.md](./client/README.md)
