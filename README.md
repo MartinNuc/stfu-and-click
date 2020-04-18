@@ -1,5 +1,7 @@
 # stfu-and-click
 
+![Tests](https://github.com/MartinNuc/stfu-and-click/workflows/Tests/badge.svg)
+
 This a repository for interview challenge for AppLifting.
 
 The goal is to create a game where users click a button to reach the higest score. Players may group into teams to achieve higher score together.
