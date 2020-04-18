@@ -59,6 +59,9 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     needs: dependencies
+    strategy:
+      matrix:
+        redis-version: [4, 5]
     steps:
       - uses: actions/checkout@v2      
       - name: Use Node.js
@@ -77,11 +80,15 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Server tests
-        run: yarn server test
-      - name: Client tests
-        run: yarn client test
       - name: Compile shared TS models
         run: yarn shared compile
+      - name: Client tests
+        run: yarn client test
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.1.0
+        with:
+          redis-version: ${{ matrix.redis-version }}
+      - name: Server tests
+        run: yarn server test
     env:
       CI: true
