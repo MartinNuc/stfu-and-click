@@ -1,5 +1,5 @@
-import redis from '../src/db/redis';
-import redisDatastore from '../src/datasource/index';
+import redis from '../db/redis';
+import redisDatastore from './index';
 import { promisify } from 'util';
 
 const get = promisify(redis.get).bind(redis);
@@ -7,7 +7,7 @@ const set = promisify(redis.set).bind(redis);
 const zscore = promisify(redis.zscore).bind(redis);
 const zincrby = promisify(redis.zincrby).bind(redis);
 
-describe.only('Redis datastore test', () => {
+describe('Redis datastore test', () => {
   beforeEach((done) => {
     redis.flushall(done);
   });
