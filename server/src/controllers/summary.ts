@@ -1,28 +1,26 @@
-import { ClickResponse } from 'stfu-and-click-shared/src/click';
-import { ClickRecord, getAllClickRecords } from './../db/index';
-import { NotFoundError } from '../errors/not-found';
+import { Team } from 'stfu-and-click-shared/src/team';
+import { Session } from 'stfu-and-click-shared/src/session';
+import { ClickRequest } from 'stfu-and-click-shared/src/click';
+import datasource from '../datasource';
 
-export function getUsersSummary(session: string): ClickResponse {
-  const clicks = getAllClickRecords();
-  const usersClickRecord = findClickRecordBySession(clicks, session);
-  if (!usersClickRecord) {
-    throw new NotFoundError(`No click record for given session ${session}`);
-  }
+export type User = {
+  session: Session;
+  team: Team;
+};
 
-  const usersClicksCount = usersClickRecord.clicks;
-  const teamClicksCount = clicks
-    .filter((click) => click.team === usersClickRecord.team)
-    .reduce((acc, click) => acc + click.clicks, 0);
+export type UserSummary = {
+  yourClicks: number;
+  teamClicks: number;
+};
+
+export async function getUserSummary(userInfo: User): Promise<UserSummary> {
+  const [yourClicks, teamClicks] = await Promise.all([
+    datasource.getUserScore(userInfo),
+    datasource.getTeamScore(userInfo.team),
+  ]);
 
   return {
-    yourClicks: usersClicksCount,
-    teamClicks: teamClicksCount,
+    yourClicks,
+    teamClicks,
   };
-}
-
-function findClickRecordBySession(
-  clicks: ClickRecord[],
-  session: string,
-): ClickRecord | undefined {
-  return clicks.find((item) => item.session === session);
 }

@@ -42,3 +42,11 @@ Response:
   "teamClicks": 5
 }
 ```
+
+## Persistance
+
+It uses external Redis cache to store data.
+
+Team score is stored in a sorted set called `teams`. The score of sorted set is number of team's clicks. The value is team name.
+
+User's score is stored as a simple number with key `user:<session>`.

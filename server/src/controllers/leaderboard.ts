@@ -1,26 +1,12 @@
 import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
-import { ClickRecord, getAllClickRecords } from './../db/index';
+import datasource from '../datasource';
 
-export function getAll(): LeaderboardEntry[] {
-  // aggregate clicks by team
-  const clicks = getAllClickRecords();
-  const aggregatedClicksMap = clicks.reduce((acc, click) => {
-    const teamsCurrentClicks = acc.get(click.team);
-    if (typeof teamsCurrentClicks === 'undefined') {
-      acc.set(click.team, click);
-    } else {
-      acc.set(click.team, {
-        ...teamsCurrentClicks,
-        clicks: teamsCurrentClicks.clicks + click.clicks,
-      });
-    }
-    return acc;
-  }, new Map<string, ClickRecord>());
+export async function getAll(): Promise<LeaderboardEntry[]> {
+  const clicks = await datasource.getAllTeamsScore();
+  const copy = clicks.slice();
+  copy.sort((a, b) => b.clicks - a.clicks);
 
-  const aggregatedClicks = Array.from(aggregatedClicksMap.values());
-  aggregatedClicks.sort((a, b) => b.clicks - a.clicks);
-
-  return aggregatedClicks.map((click, index) => ({
+  return copy.map((click, index) => ({
     clicks: click.clicks,
     team: click.team,
     order: index + 1,

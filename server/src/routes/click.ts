@@ -1,15 +1,15 @@
 import { ClickRequest } from 'stfu-and-click-shared/src/click';
 import express from 'express';
 import { registerClick } from '../controllers/click';
-import { getUsersSummary } from '../controllers/summary';
+import { getUserSummary } from '../controllers/summary';
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const click = req.body as ClickRequest;
   registerClick(click);
 
-  const mySummary = getUsersSummary(click.session);
+  const mySummary = await getUserSummary(click);
   res.json(mySummary);
 });
 

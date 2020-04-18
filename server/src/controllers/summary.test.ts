@@ -1,41 +1,24 @@
+import { ClickRequest } from 'stfu-and-click-shared/src/click';
 import { mocked } from 'ts-jest/utils';
-jest.mock('../db');
+jest.mock('../datasource');
 
-import * as db from '../db';
-import { getUsersSummary } from './summary';
+import datasource from '../datasource';
+import { getUserSummary } from './summary';
 
-const mockedDb = mocked(db, true);
+const mockedDb = mocked(datasource, true);
 
 describe('SummaryController', () => {
-  mockedDb.getAllClickRecords.mockReturnValue([
-    {
-      team: 'applifting',
+  it(`should fetch user and team score from DB for executed click`, async () => {
+    jest.spyOn(mockedDb, 'getUserScore').mockResolvedValue(10);
+    jest.spyOn(mockedDb, 'getTeamScore').mockResolvedValue(20);
+
+    const click: ClickRequest = {
       session: 'abc123',
-      clicks: 20,
-    },
-    {
-      team: 'jiny',
-      session: 'Martin',
-      clicks: 8,
-    },
-    {
-      team: 'applifting',
-      session: 'fhsleih34u2ufw',
-      clicks: 5,
-    },
-  ]);
+      team: 'team',
+    };
+    const response = await getUserSummary(click);
 
-  it(`should throw error when user's session is not found`, () => {
-    expect(() => getUsersSummary('non-existing-session')).toThrowError();
-  });
-
-  it(`should sum team clicks`, () => {
-    const summary = getUsersSummary('fhsleih34u2ufw');
-    expect(summary.teamClicks).toBe(25);
-  });
-
-  it(`should calculate user's clicks`, () => {
-    const summary = getUsersSummary('fhsleih34u2ufw');
-    expect(summary.yourClicks).toBe(5);
+    expect(response.yourClicks).toBe(10);
+    expect(response.teamClicks).toBe(20);
   });
 });

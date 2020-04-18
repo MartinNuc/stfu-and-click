@@ -3,8 +3,8 @@ import { getAll } from '../controllers/leaderboard';
 
 const router = express.Router();
 
-router.get('/', (_, res) => {
-  const leaderboard = getAll();
+router.get('/', async (_, res) => {
+  const leaderboard = await getAll();
   res.json(leaderboard);
 });
 

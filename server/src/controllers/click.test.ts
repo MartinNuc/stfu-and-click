@@ -1,33 +1,21 @@
 import { mocked } from 'ts-jest/utils';
-jest.mock('../db');
+jest.mock('../datasource');
 
-import * as db from '../db';
+import datasource from '../datasource';
 import { ClickRequest } from 'stfu-and-click-shared/src/click';
 import { registerClick } from './click';
 
-const mockedDb = mocked(db, true);
+const mockedDb = mocked(datasource, true);
 
 describe('ClickController', () => {
-  const click: ClickRequest = {
-    session: 'abc123',
-    team: 'A-Team',
-  };
+  it('should pass the click to the data source', async () => {
+    jest.spyOn(mockedDb, 'registerClick');
+    const click: ClickRequest = {
+      session: 'abc123',
+      team: 'A-Team',
+    };
 
-  it('should register brand new click', () => {
-    mockedDb.getAllClickRecords.mockReturnValue([]);
-    registerClick(click);
-    expect(mockedDb.registerNewClick.mock.calls).toHaveLength(1);
-  });
-
-  it('should increment click count for existing click', () => {
-    mockedDb.getAllClickRecords.mockReturnValue([
-      {
-        clicks: 5,
-        session: 'abc123',
-        team: 'A-Team',
-      },
-    ]);
-    registerClick(click);
-    expect(mockedDb.incrementExistingClick.mock.calls).toHaveLength(1);
+    await registerClick(click);
+    expect(mockedDb.registerClick).toHaveBeenCalledTimes(1);
   });
 });

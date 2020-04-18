@@ -1,6 +1,9 @@
+import { Session } from './session';
+import { Team } from './team';
+
 export type ClickRequest = {
-  team: string;
-  session: string;
+  team: Team;
+  session: Session;
 }
 
 export type ClickResponse = {
