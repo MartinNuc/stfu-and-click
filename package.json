@@ -14,7 +14,9 @@
     ],
     "nohoist": [
       "**/jest",
-      "**/jest/**"
+      "**/jest/**",
+      "**/typescript/**",
+      "**/typescript/**"
     ]
   },
   "scripts": {
