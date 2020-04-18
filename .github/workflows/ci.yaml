@@ -61,7 +61,7 @@ jobs:
     needs: dependencies
     strategy:
       matrix:
-        redis-version: [4, 5]
+        redis-version: [5]
     steps:
       - uses: actions/checkout@v2      
       - name: Use Node.js
