@@ -1,4 +1,3 @@
-import { Session } from 'stfu-and-click-shared/src/session';
 import { DataSource } from './datasource.interface';
 import { ClickRequest } from 'stfu-and-click-shared/src/click';
 import { TeamClickRecord } from './schema';
