@@ -2,8 +2,14 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const header = getByText(/Hello/i);
+test('renders header and footer', () => {
+  const { getByTestId } = render(<App />);
+  const header = getByTestId('header');
   expect(header).toBeInTheDocument();
+});
+
+test('renders footer', () => {
+  const { getByTestId } = render(<App />);
+  const footer = getByTestId('footer');
+  expect(footer).toBeInTheDocument();
 });

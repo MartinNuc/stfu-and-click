@@ -1,5 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components';
+
+export const Header: FC = (props) => {
+  return (
+    <Navbar {...props}>
+      STFUANDCLICK.COM
+    </Navbar>
+  )
+}
 
 const Navbar = styled.div`
   background-color: #498fe2;
@@ -12,11 +20,3 @@ const Navbar = styled.div`
   padding: 1rem;
   align-self: stretch;
 `;
-
-export default function Header() {
-  return (
-    <Navbar>
-      STFUANDCLICK.COM
-    </Navbar>
-  )
-}

@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import JoinGame from 'containers/JoinGame';
-import Game from 'containers/Game';
+import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
+import { JoinGame } from 'containers/JoinGame';
+import { Game } from 'containers/Game';
 
 const Layout = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ const Content = styled.div`
 function App() {
   return (
     <Layout>
-      <Header />
+      <Header data-testid="header" />
       <Content>
         <Router>
           <Route path="/">
@@ -33,7 +33,7 @@ function App() {
           </Route>
         </Router>
       </Content>
-      <Footer />
+      <Footer data-testid="footer" />
     </Layout>
   );
 }

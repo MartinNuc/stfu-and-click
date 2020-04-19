@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-export default function Game() {
-  return (
-    <div>
-      Playing
-    </div>
-  )
-}
+export const Game = () => {
+  return <div>Playing</div>;
+};
