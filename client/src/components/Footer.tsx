@@ -5,7 +5,7 @@ import { Quote } from 'components/Quote';
 export const Footer: FC = (props) => {
   return (
     <StyledFooter {...props}>
-      <Quote author="Martin Nuc">
+      <Quote>
         If you don't like this page, it's{' '}
         <a
           href="https://www.applifting.cz"
