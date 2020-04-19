@@ -43,6 +43,14 @@ Response:
 }
 ```
 
+## Scripts
+
+- `yarn start` - compiles and runs the server
+- `yarn build` - compiles the source into `dist` folder
+- `yarn test` - runs both unit and integration tests
+- `yarn test:unit` - runs unit tests only
+- `yarn test:integration` - runs integration tests only
+
 ## Persistance
 
 It uses external Redis cache to store data.

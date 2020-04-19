@@ -1,3 +1,9 @@
+/**
+ * Tests communication of data source with Redis
+ *
+ * @group integration
+ */
+
 import redis from '../db/redis';
 import redisDatastore from './index';
 import { promisify } from 'util';
@@ -7,7 +13,7 @@ const set = promisify(redis.set).bind(redis);
 const zscore = promisify(redis.zscore).bind(redis);
 const zincrby = promisify(redis.zincrby).bind(redis);
 
-describe('Integration:Redis datastore test', () => {
+describe('Redis datasource test', () => {
   beforeEach((done) => {
     redis.flushall(done);
   });

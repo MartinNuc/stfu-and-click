@@ -1,3 +1,9 @@
+/**
+ * API e2e tests
+ * 
+ * @group integration
+ */
+
 import request from 'supertest';
 import app from '../server';
 import _ from '../datasource';

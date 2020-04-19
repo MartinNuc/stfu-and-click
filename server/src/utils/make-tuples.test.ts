@@ -1,3 +1,7 @@
+/**
+ * @group unit
+ */
+
 import { makeTuples } from './make-tuples';
 
 describe('Unit:makeTuples', () => {

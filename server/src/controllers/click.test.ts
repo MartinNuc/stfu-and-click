@@ -1,3 +1,7 @@
+/**
+ * @group unit
+ */
+
 import { mocked } from 'ts-jest/utils';
 jest.mock('../datasource');
 
@@ -7,7 +11,7 @@ import { registerClick } from './click';
 
 const mockedDb = mocked(datasource, true);
 
-describe('Unit:ClickController', () => {
+describe('ClickController', () => {
   it('should pass the click to the data source', async () => {
     jest.spyOn(mockedDb, 'registerClick');
     const click: ClickRequest = {

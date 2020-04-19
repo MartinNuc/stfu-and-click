@@ -11,7 +11,9 @@
     "coverage": "jest --collectCoverage",
     "start": "tsc && node dist/index.js",
     "pretest": "rm -rf dist",
-    "test": "jest"
+    "test": "jest --group=unit --group=integration",
+    "test:unit": "jest --group=unit",
+    "test:integration": "jest --group=integration"
   },
   "dependencies": {
     "body-parser": "1.19.0",
@@ -27,6 +29,7 @@
     "@types/redis": "2.8.17",
     "@types/supertest": "2.0.8",
     "jest": "25.3.0",
+    "jest-runner-groups": "1.1.1",
     "supertest": "4.0.2",
     "ts-jest": "25.4.0",
     "typescript": "3.8.3"

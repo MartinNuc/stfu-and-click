@@ -6524,7 +6524,7 @@ jest-docblock@^24.3.0:
   dependencies:
     detect-newline "^2.1.0"
 
-jest-docblock@^25.3.0:
+jest-docblock@^25.1.0, jest-docblock@^25.3.0:
   version "25.3.0"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-25.3.0.tgz#8b777a27e3477cd77a168c05290c471a575623ef"
   integrity sha512-aktF0kCar8+zxRHxQZwxMy70stc9R1mOmrLsT5VO3pIT0uzGRSDAXxSlz4NqQWpuLjPpuMhPRl7H+5FRsvIQAg==
@@ -6838,6 +6838,14 @@ jest-resolve@^25.3.0:
     realpath-native "^2.0.0"
     resolve "^1.15.1"
 
+jest-runner-groups@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/jest-runner-groups/-/jest-runner-groups-1.1.1.tgz#14618a1b6de312abbcc92b5aa42fcb36332acc20"
+  integrity sha512-6EkoCbZxkI6WVTUHPIK29nepLINkcvnIagsjtyjlWaFarcwpv0vkrPpvU2Gy+4F8L7akcDcysZ436eaDjXwsDw==
+  dependencies:
+    jest-docblock "^25.1.0"
+    jest-runner "^25.1.0"
+
 jest-runner@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-runner/-/jest-runner-24.9.0.tgz#574fafdbd54455c2b34b4bdf4365a23857fcdf42"
@@ -6863,7 +6871,7 @@ jest-runner@^24.9.0:
     source-map-support "^0.5.6"
     throat "^4.0.0"
 
-jest-runner@^25.3.0:
+jest-runner@^25.1.0, jest-runner@^25.3.0:
   version "25.3.0"
   resolved "https://registry.yarnpkg.com/jest-runner/-/jest-runner-25.3.0.tgz#673ef2ac79d2810eb6b2c1a3f82398375a3d1174"
   integrity sha512-csDqSC9qGHYWDrzrElzEgFbteztFeZJmKhSgY5jlCIcN0+PhActzRNku0DA1Xa1HxGOb0/AfbP1EGJlP4fGPtA==
