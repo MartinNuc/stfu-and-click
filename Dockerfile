@@ -1,7 +1,7 @@
 FROM node:12
 
-RUN apt-get update -y
-RUN apt-get install yarn -y
+# RUN apt-get update -y
+# RUN apt-get install yarn=1.22.0 -y
 
 WORKDIR /app
 EXPOSE 3000
@@ -14,4 +14,5 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 RUN yarn build
+ENV NODE_ENV production
 CMD node dist/index.js
