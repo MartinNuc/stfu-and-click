@@ -1,7 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import styled from 'styled-components';
+import JoinGame from 'containers/JoinGame';
+import Game from 'containers/Game';
 
 const Layout = styled.div`
   display: flex;
@@ -19,7 +23,16 @@ function App() {
   return (
     <Layout>
       <Header />
-      <Content>Hello</Content>
+      <Content>
+        <Router>
+          <Route path="/">
+            <JoinGame />
+          </Route>
+          <Route path="/:team">
+            <Game />
+          </Route>
+        </Router>
+      </Content>
       <Footer />
     </Layout>
   );
