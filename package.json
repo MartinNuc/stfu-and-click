@@ -20,11 +20,16 @@
     ]
   },
   "scripts": {
+    "clear": "yarn rimraf dist",
+    "build": "yarn client build && yarn server build && yarn clear && yarn build:merge",
+    "build:merge": "cpr server/dist dist && cpr client/build dist/public",
     "client": "yarn workspace stfu-and-click-client",
     "server": "yarn workspace stfu-and-click-server",
     "shared": "yarn workspace stfu-and-click-shared"
   },
   "devDependencies": {
-    "prettier": "2.0.4"
+    "cpr": "3.0.1",
+    "prettier": "2.0.4",
+    "rimraf": "3.0.2"
   }
 }

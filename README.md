@@ -6,11 +6,13 @@ This a repository for interview challenge for AppLifting.
 
 The goal is to create a game where users click a button to reach the higest score. Players may group into teams to achieve higher score together.
 
+`yarn build` builds both frontend and backend into dist folder.
+
 ## Server
 
 See [server's README.md](./server/README.md)
 
-### Commands
+### Scripts
 
 `yarn server start` to start server
 
@@ -26,6 +28,6 @@ See [client's README.md](./client/README.md)
 
 Shared module contains Typescript models which are shared between client and server for API.
 
-### Commands
+### Scripts
 
 `yarn shared compile` to verify that shared modules is compilable
