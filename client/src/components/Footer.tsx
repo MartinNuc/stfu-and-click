@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { Quote } from 'components/Quote';
 
-const Quote = styled.div`
-  font-style: italic;
-`;
+export const Footer: FC = (props) => {
+  return (
+    <StyledFooter {...props}>
+      <Quote author="Martin Nuc">
+        If you don't like this page, it's{' '}
+        <a
+          href="https://www.applifting.cz"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Applifting
+        </a>
+        's fault.
+      </Quote>
+    </StyledFooter>
+  );
+}
 
 const StyledFooter = styled.div`
   display: flex;
@@ -13,13 +28,3 @@ const StyledFooter = styled.div`
   padding: 1rem;
   align-self: stretch;
 `;
-
-export default function Footer() {
-  return (
-    <StyledFooter>
-      <Quote>
-        If you don't like this page, it's <a href="https://www.applifting.cz" target="_blank" rel="noopener noreferrer">Applifting</a>'s fault.
-      </Quote>
-    </StyledFooter>
-  )
-}
