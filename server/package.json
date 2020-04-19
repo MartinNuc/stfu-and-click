@@ -11,9 +11,9 @@
     "coverage": "jest --collectCoverage",
     "start": "tsc && node dist/index.js",
     "pretest": "rm -rf dist",
-    "test": "jest --group=unit --group=integration",
+    "test": "jest --group=unit --group=integration --forceExit",
     "test:unit": "jest --group=unit",
-    "test:integration": "jest --group=integration"
+    "test:integration": "jest --group=integration --forceExit"
   },
   "dependencies": {
     "body-parser": "1.19.0",

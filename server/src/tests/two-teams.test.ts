@@ -1,6 +1,6 @@
 /**
  * API e2e tests
- * 
+ *
  * @group integration
  */
 
@@ -8,26 +8,29 @@ import request from 'supertest';
 import app from '../server';
 import _ from '../datasource';
 import redis from '../db/redis';
+import http from 'http';
 
 describe('REST:stfu and click button test', () => {
+  let server: http.Server;
+
   beforeEach((done) => {
     redis.flushall(done);
   });
 
-  afterAll((done) => {
-    redis.quit(done);
+  beforeAll((done) => {
+    server = app.listen(0, done);
   });
 
   it('should allow multiple players to compete', async () => {
-    await request(app).post('/api/v1/click').send({
+    await request(server).post('/api/v1/click').send({
       team: 'applifting',
       session: 'abc123',
     });
-    await request(app).post('/api/v1/click').send({
+    await request(server).post('/api/v1/click').send({
       team: 'another team',
       session: 'jkl123',
     });
-    const clickResponse = await request(app).post('/api/v1/click').send({
+    const clickResponse = await request(server).post('/api/v1/click').send({
       team: 'applifting',
       session: 'zxc123',
     });
@@ -36,7 +39,8 @@ describe('REST:stfu and click button test', () => {
       yourClicks: 1,
       teamClicks: 2,
     });
-    const leaderboard = await request(app).get('/api/v1/leaderboard').send();
+
+    const leaderboard = await request(server).get('/api/v1/leaderboard').send();
     expect(leaderboard.body).toEqual([
       {
         team: 'applifting',

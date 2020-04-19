@@ -49,7 +49,7 @@ Response:
 - `yarn build` - compiles the source into `dist` folder
 - `yarn test` - runs both unit and integration tests
 - `yarn test:unit` - runs unit tests only
-- `yarn test:integration` - runs integration tests only
+- `yarn test:integration` - runs integration tests only. It needs `--forceExit` because there is zombied open handle when using combination of redis and supertest.
 
 ## Persistance
 
