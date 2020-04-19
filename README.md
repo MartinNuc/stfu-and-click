@@ -10,9 +10,10 @@ The goal is to create a game where users click a button to reach the higest scor
 
 ## What I wanted to try out during this challenge
 
+- Redis as a storage although it's better for caching
 - yarn workspaces
-- server REST tests using supertest
-- Github Actions
+- server REST tests using [supertest](https://github.com/visionmedia/supertest)
+- Github Actions with dependency caching
 - deploy to Heroku using Docker container from Github Actions
 - docker compose to run app locally (not for development)
 
