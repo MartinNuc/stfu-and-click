@@ -1,6 +1,6 @@
 # stfu-and-click
 
-![Tests](https://github.com/MartinNuc/stfu-and-click/workflows/Tests/badge.svg)
+![Continous deployment](https://github.com/MartinNuc/stfu-and-click/workflows/Continous%20deployment/badge.svg)
 
 This a repository for interview challenge for AppLifting.
 
