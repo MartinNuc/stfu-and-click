@@ -1,0 +1,13 @@
+version: '2.0'
+services:
+  web:
+    build: .
+    ports:
+    - "3000:3000"
+    links:
+    - redis
+    environment:
+      "REDIS_URL": "redis://redis:6379"
+      "NODE_ENV": "production"
+  redis:
+    image: redis

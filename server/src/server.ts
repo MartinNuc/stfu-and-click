@@ -16,9 +16,13 @@ app.use(morgan('tiny', { stream: new LoggerStream() }));
 app.use('/api/v1/leaderboard', LeaderboardRoute);
 app.use('/api/v1/click', ClickRoute);
 
-// when the stfu-and-click workspace is built the React is placed into public folder
-app.use(express.static(path.join(__dirname, 'public')));
-// when the path doesn't match any file serve index.html to delegate routing to the React Router
-app.get('*', (_, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+if (process.env.NODE_ENV === 'production') {
+  // when the stfu-and-click workspace is built the React is placed into public folder
+  app.use(express.static(path.join(__dirname, 'public')));
+  // when the path doesn't match any file serve index.html to delegate routing to the React Router
+  app.get('*', (_, res) =>
+    res.sendFile(path.join(__dirname, 'public', 'index.html')),
+  );
+}
 
 export default app;

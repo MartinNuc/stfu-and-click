@@ -8,6 +8,18 @@ The goal is to create a game where users click a button to reach the higest scor
 
 `yarn build` builds both frontend and backend into dist folder.
 
+## What I wanted to try out during this challenge
+
+- yarn workspaces
+- server REST tests using supertest
+- Github Actions
+- deploy to Heroku using Docker container from Github Actions
+- docker compose to run app locally (not for development)
+
+## Docker
+
+Use `docker-compose up` to start the app including Redis. It runs the production build. It is not intended for development.
+
 ## Server
 
 See [server's README.md](./server/README.md)
@@ -18,7 +30,7 @@ See [server's README.md](./server/README.md)
 
 `yarn server build` to build server to `server/dist` folder
 
-`yarn server test` to run tests (local redis must be running for e2e REST tests)
+`yarn server test` to run tests (local redis must be running for integration tests)
 
 ## Client
 
