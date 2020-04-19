@@ -1,6 +1,5 @@
 import { Team } from 'stfu-and-click-shared/src/team';
 import { Session } from 'stfu-and-click-shared/src/session';
-import { ClickRequest } from 'stfu-and-click-shared/src/click';
 import datasource from '../datasource';
 
 export type User = {
