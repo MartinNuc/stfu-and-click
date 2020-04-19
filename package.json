@@ -15,7 +15,7 @@
     "nohoist": [
       "**/jest",
       "**/jest/**",
-      "**/typescript/**",
+      "**/typescript",
       "**/typescript/**"
     ]
   },
