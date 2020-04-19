@@ -1,7 +1,7 @@
 import request from 'supertest';
-import app from '../src/server';
-import _ from '../src/datasource';
-import redis from '../src/db/redis';
+import app from '../server';
+import _ from '../datasource';
+import redis from '../db/redis';
 
 describe('REST:stfu and click button test', () => {
   beforeEach((done) => {
