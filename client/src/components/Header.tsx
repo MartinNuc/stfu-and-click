@@ -10,7 +10,7 @@ export const Header: FC = (props) => {
 }
 
 const Navbar = styled.div`
-  background-color: #498fe2;
+  background-color: ${props => props.theme.primary};
   color: white;
   text-transform: uppercase;
   font-weight: bold;
