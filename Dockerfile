@@ -4,7 +4,7 @@ FROM node:12
 # RUN apt-get install yarn=1.22.0 -y
 
 WORKDIR /app
-EXPOSE 3000
+EXPOSE 3001
 
 COPY package.json .
 COPY client/package.json ./client/
