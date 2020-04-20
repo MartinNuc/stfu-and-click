@@ -1,33 +1,30 @@
-import React, { FC } from 'react';
-import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
+import React, { FC, useEffect } from 'react';
+import { Error } from 'atoms/Error';
 import { ScoreTable } from 'components/ScoreTable';
 import { FlagTitle } from 'components/FlagTitle';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store';
+import { fetchLeaderboard } from 'store/leaderboardSlice';
+import { Spinner } from 'atoms/Spinner';
 
 export const TopTen: FC = (props) => {
-  const scores: LeaderboardEntry[] = [
-    {
-      order: 1,
-      clicks: 50043243,
-      team: 'bulanci',
-    },
-    {
-      order: 2,
-      clicks: 30483,
-      team: 'team 2',
-    },
-    {
-      order: 3,
-      clicks: 5434,
-      team: 'team 3',
-    },
-  ];
+  const dispatch = useDispatch();
+  const {leaderboard, error, isLoading} = useSelector((state: RootState) => state.leaderboard);
+  useEffect(() => {
+    async function fetchData() {
+      await dispatch(fetchLeaderboard());
+    }
+    fetchData();
+  }, [dispatch]);
   return (
     <Container {...props}>
       <FlagContainer>
         <FlagTitle title="TOP 10 Clickers" />
       </FlagContainer>
-      <ScoreTable scores={scores}></ScoreTable>
+      <ScoreTable scores={leaderboard}></ScoreTable>
+      {isLoading && <Spinner/>}
+      {error && <Error>{error}</Error>}
     </Container>
   );
 };

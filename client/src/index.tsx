@@ -4,20 +4,25 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+
+import store from 'store';
 
 const theme = {
   primary: '#498fe2',
   secondary: '#417ec1',
   backgroundPrimary: '#dce9f8',
   backgroundSecondary: '#ecf3fd',
-  subtleText: '#9a9a9a'
+  subtleText: '#9a9a9a',
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
