@@ -6,7 +6,7 @@ import { Quote } from './Quote';
 test('renders quote without author', () => {
   const { getByTestId, queryByTestId } = render(<Quote>This is a text</Quote>);
   const textEl = getByTestId('text');
-  
+
   expect(getNodeText(textEl)).toBe('This is a text');
   expect(queryByTestId('author')).toBeNull();
 });

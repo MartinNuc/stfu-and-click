@@ -31,7 +31,9 @@ export const ScoreTable: FC<Props> = ({ scores }) => {
         ))}
         {!scores.length && (
           <tr>
-            <RowOverWholeTable data-testid="empty">There are no scores yet</RowOverWholeTable>
+            <RowOverWholeTable data-testid="empty">
+              There are no scores yet
+            </RowOverWholeTable>
           </tr>
         )}
       </TableBodyWithAlternatingRows>

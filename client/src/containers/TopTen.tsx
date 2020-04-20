@@ -33,7 +33,7 @@ export const TopTen: FC = (props) => {
 };
 
 const Container = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;

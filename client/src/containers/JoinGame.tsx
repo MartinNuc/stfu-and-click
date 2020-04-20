@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
-import { BlueBorderedContainer } from 'components/BlueBordredContainer';
+import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
 import { TopTen } from 'containers/TopTen';
+import { JoinGameForm } from 'components/JoinGameForm';
 
 export const JoinGame = () => {
+  function joinGame(team: string) {
+    console.log(team);
+  }
+
   return (
     <Container>
       <QuoteContainer>
@@ -13,7 +18,8 @@ export const JoinGame = () => {
         </Quote>
       </QuoteContainer>
       <BlueBorderedContainer>
-        <div>form</div>
+        <JoinGameForm onJoin={joinGame}></JoinGameForm>
+
         <TopTen />
 
         <QuoteContainer>

@@ -17,7 +17,7 @@ export const JoinGameForm: FC<Props> = ({ onJoin }) => {
 
     if (!team) {
       setError('Come up with a cool team name first');
-      return 
+      return;
     }
     onJoin(team);
   }

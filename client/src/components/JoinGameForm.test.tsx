@@ -7,7 +7,7 @@ test(`it should emit team's name when submitted`, async () => {
   const { getByTestId } = render(<JoinGameForm onJoin={onJoin} />);
   const input = getByTestId('team');
   const submitButton = getByTestId('submit');
-  fireEvent.change(input, {target: { value: 'Bubaci'}});
+  fireEvent.change(input, { target: { value: 'Bubaci' } });
   fireEvent.click(submitButton);
   expect(onJoin).toHaveBeenCalledWith('Bubaci');
 });
@@ -17,7 +17,7 @@ test(`it should not allow empty team name`, async () => {
   const { getByTestId } = render(<JoinGameForm onJoin={onJoin} />);
   const input = getByTestId('team');
   const submitButton = getByTestId('submit');
-  fireEvent.change(input, {target: { value: ''}});
+  fireEvent.change(input, { target: { value: '' } });
   fireEvent.click(submitButton);
   expect(getByTestId('error')).not.toBeNull();
   expect(onJoin).not.toHaveBeenCalled();
