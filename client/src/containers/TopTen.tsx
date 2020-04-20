@@ -7,23 +7,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
 import { fetchLeaderboard } from 'store/leaderboardSlice';
 import { Spinner } from 'atoms/Spinner';
+import { createSelector } from 'reselect';
+
+const topTenSelector = createSelector(
+  (state: RootState) => state.leaderboard.leaderboard,
+  leaderboard => leaderboard.filter((_, index) => index < 10)
+);
 
 export const TopTen: FC = (props) => {
   const dispatch = useDispatch();
-  const {leaderboard, error, isLoading} = useSelector((state: RootState) => state.leaderboard);
+  const leaderboard = useSelector(topTenSelector);
+  const { error, isLoading } = useSelector(
+    (state: RootState) => state.leaderboard,
+  );
+
   useEffect(() => {
     async function fetchData() {
       await dispatch(fetchLeaderboard());
     }
     fetchData();
   }, [dispatch]);
+
   return (
     <Container {...props}>
       <FlagContainer>
         <FlagTitle title="TOP 10 Clickers" />
       </FlagContainer>
       <ScoreTable scores={leaderboard}></ScoreTable>
-      {isLoading && <Spinner/>}
+      {isLoading && <Spinner />}
       {error && <Error>{error}</Error>}
     </Container>
   );
