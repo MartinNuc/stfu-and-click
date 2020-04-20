@@ -54,7 +54,7 @@ const Table = styled.table`
 const HeaderCell = styled.th<{ isNumber?: boolean }>`
   color: ${(props) => props.theme.subtleText};
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding-left: 2rem;
   text-align: ${(props) => (props.isNumber ? 'right' : 'left')};
 `;

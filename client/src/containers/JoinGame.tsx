@@ -2,18 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
 import { BlueBorderedContainer } from 'components/BlueBordredContainer';
+import { TopTen } from 'containers/TopTen';
 
 export const JoinGame = () => {
   return (
     <Container>
-      <Quote author="anonymous">
-        "It's really simple, you just need to click as fast as you can."
-      </Quote>
+      <QuoteContainer>
+        <Quote author="anonymous">
+          "It's really simple, you just need to click as fast as you can."
+        </Quote>
+      </QuoteContainer>
       <BlueBorderedContainer>
         <div>form</div>
-        <div>Top 10</div>
+        <TopTen />
 
-        <Quote>Want to be top? STFU and click!</Quote>
+        <QuoteContainer>
+          <Quote>Want to be top? STFU and click!</Quote>
+        </QuoteContainer>
       </BlueBorderedContainer>
     </Container>
   );
@@ -22,4 +27,9 @@ export const JoinGame = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const QuoteContainer = styled.div`
+  margin: 1rem 0;
+  align-self: center;
 `;

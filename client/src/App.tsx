@@ -16,7 +16,7 @@ const Layout = styled.div`
 
 const Content = styled.div`
   max-width: 500px;
-  margin: 2rem;
+  margin: 0 2rem;
 `;
 
 function App() {
