@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getNodeText } from '@testing-library/react';
+import { render, getNodeText } from 'utils/test-utils'
 
 import { Quote } from './Quote';
 

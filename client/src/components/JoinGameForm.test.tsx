@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitForDomChange } from '@testing-library/react';
+import { render, fireEvent, waitForDomChange } from 'utils/test-utils'
 import { JoinGameForm } from './JoinGameForm';
 
 test(`it should emit team's name when submitted`, async () => {
