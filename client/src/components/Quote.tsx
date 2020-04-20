@@ -8,20 +8,25 @@ type Props = {
 export const Quote: FC<Props> = ({ children, author }) => {
   return (
     <StyledQuote>
-      <div data-testid="text">{children}</div>
+      <BlockQuote data-testid="text">{children}</BlockQuote>
       {author && <Author data-testid="author">- {author}</Author>}
     </StyledQuote>
   );
 };
 
-const StyledQuote = styled.div`
+const BlockQuote = styled.blockquote`
+  margin-block-end: 0;
+  margin-block-start: 0;
+`;
+
+const StyledQuote = styled.figure`
   font-style: italic;
   display: flex;
   flex-direction: column;
   margin: 1rem;
 `;
 
-const Author = styled.span`
+const Author = styled.footer`
   text-align: right;
   margin-top: 0.5rem;
   margin-right: 2rem;

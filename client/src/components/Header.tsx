@@ -1,16 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 export const Header: FC = (props) => {
-  return (
-    <Navbar {...props}>
-      STFUANDCLICK.COM
-    </Navbar>
-  )
-}
+  return <StyledHeader {...props}>STFUANDCLICK.COM</StyledHeader>;
+};
 
-const Navbar = styled.div`
-  background-color: ${props => props.theme.primary};
+const StyledHeader = styled.header`
+  background-color: ${(props) => props.theme.primary};
   color: white;
   text-transform: uppercase;
   font-weight: bold;
