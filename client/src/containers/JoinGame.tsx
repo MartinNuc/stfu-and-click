@@ -23,7 +23,7 @@ export const JoinGame = () => {
         <TopTen />
 
         <QuoteContainer>
-          <Quote>Want to be top? STFU and click!</Quote>
+          <Quote>Want to be the top? STFU and click!</Quote>
         </QuoteContainer>
       </BlueBorderedContainer>
     </Container>

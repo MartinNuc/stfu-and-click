@@ -17,6 +17,8 @@ export const Quote: FC<Props> = ({ children, author }) => {
 const BlockQuote = styled.blockquote`
   margin-block-end: 0;
   margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 `;
 
 const StyledQuote = styled.figure`
