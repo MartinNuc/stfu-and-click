@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
 import { ScoreTable } from 'components/ScoreTable';
+import { FlagTitle } from 'components/FlagTitle';
+import styled from 'styled-components';
 
 export const TopTen: FC = (props) => {
   const scores: LeaderboardEntry[] = [
@@ -21,9 +23,22 @@ export const TopTen: FC = (props) => {
     },
   ];
   return (
-    <div {...props}>
-      logo
+    <Container {...props}>
+      <FlagContainer>
+        <FlagTitle title="TOP 10 Clickers" />
+      </FlagContainer>
       <ScoreTable scores={scores}></ScoreTable>
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+`;
+
+const FlagContainer = styled.div`
+  margin: 0.7rem;
+`;
