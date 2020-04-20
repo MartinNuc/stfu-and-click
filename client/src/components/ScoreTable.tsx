@@ -70,8 +70,10 @@ const BodyCell = styled.td<{ isNumber?: boolean }>`
 `;
 
 const RowOverWholeTable = styled(BodyCell).attrs(() => ({
-  colspan: 3,
-}))``;
+  colSpan: 3,
+}))`
+  text-align: center;
+`;
 
 const TableBodyWithAlternatingRows = styled.tbody`
   & > tr:nth-child(odd) {
