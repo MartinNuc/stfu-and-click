@@ -1,6 +1,7 @@
 import React, { FC, useState, FormEvent } from 'react';
 import styled from 'styled-components';
 import { Button } from 'atoms/Button';
+import { Error } from 'atoms/Error';
 import { Input } from 'atoms/Input';
 import { Label } from 'atoms/Label';
 
@@ -50,10 +51,4 @@ const FormGroup = styled.div`
   flex-direction: column;
   flex-grow: 1;
   margin: 0.5rem;
-`;
-
-const Error = styled.div`
-  color: red;
-  margin-top: 0.2rem;
-  font-size: small;
 `;
