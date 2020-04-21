@@ -5,6 +5,12 @@ import { getUserSummary } from '../controllers/summary';
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+  const click = req.body as ClickRequest;
+  const mySummary = await getUserSummary(click);
+  res.json(mySummary);
+});
+
 router.post('/', async (req, res) => {
   const click = req.body as ClickRequest;
   registerClick(click);
