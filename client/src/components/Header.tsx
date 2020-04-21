@@ -1,8 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Header: FC = (props) => {
-  return <StyledHeader {...props}>STFUANDCLICK.COM</StyledHeader>;
+  return (
+    <StyledHeader {...props}>
+      <PageName to="/">STFUANDCLICK.COM</PageName>
+    </StyledHeader>
+  );
 };
 
 const StyledHeader = styled.header`
@@ -15,4 +20,9 @@ const StyledHeader = styled.header`
   justify-content: center;
   padding: 1rem;
   align-self: stretch;
+`;
+
+const PageName = styled(Link)`
+  color: white;
+  text-decoration: none;
 `;
