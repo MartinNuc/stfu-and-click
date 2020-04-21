@@ -5,7 +5,6 @@ import { v4 as generateRandomUuid } from 'uuid';
 const initialState = {
   error: null as string | null,
   myClicks: 0,
-  teamClicks: 0,
   myTeam: null as Team | null,
   session: generateRandomUuid(),
 };
