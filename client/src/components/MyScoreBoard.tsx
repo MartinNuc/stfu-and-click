@@ -1,28 +1,42 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 import { delimitThousands } from 'utils/thousands-delimiter';
+import { createSelector } from 'reselect';
+
+const getMyTeamName = (state: RootState) => state.game.myTeam;
+const getLeaderboard = (state: RootState) => state.leaderboard.leaderboard;
+
+const scoresSelector = createSelector(
+  [getMyTeamName, getLeaderboard],
+  (myTeam, leaderboard) => leaderboard.find((item) => item.team === myTeam),
+);
 
 export const MyScoreBoard = () => {
-  const { myClicks, myTeam } = useSelector((state: RootState) => state.game)
-  const myTeamClicks = 653335;
+  const { myClicks } = useSelector((state: RootState) => state.game);
+  const myTeamScore = useSelector(scoresSelector);
+
   return (
     <Container>
       <BoardItem title="YourClicks:" value={myClicks} />
-      <BoardItem title="Team clicks:" value={myTeamClicks} />
+      <BoardItem title="Team clicks:" value={myTeamScore?.clicks} />
     </Container>
-  )
-}
+  );
+};
 
 type BoardItemProps = {
   title: string;
-  value: number;
-}
-const BoardItem: FC<BoardItemProps> = ({title, value}) => <Tile>
-  <Title>{title}</Title>
-  <Value>{delimitThousands(value)}</Value>
-</Tile>
+  value?: number;
+};
+const BoardItem: FC<BoardItemProps> = ({ title, value }) => (
+  <Tile>
+    <Title>{title}</Title>
+    <Value>
+      {typeof value !== 'undefined' ? delimitThousands(value) : '-'}
+    </Value>
+  </Tile>
+);
 
 const Container = styled.div`
   display: flex;
@@ -35,7 +49,7 @@ const Title = styled.div`
 `;
 
 const Value = styled.div`
-  color: ${({theme}) => theme.primary};
+  color: ${({ theme }) => theme.primary};
   font-size: 2.5rem;
   font-weight: bold;
 `;
