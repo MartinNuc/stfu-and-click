@@ -12,6 +12,9 @@ export const SocketTeamUpdateWatcher: FC = ({ children }) => {
     socket.on('teamUpdate', (data: TeamUpdateEvent) => {
       dispatch(updateTeamScore(data));
     });
+    return () => {
+      socket.close();
+    };
   }, [dispatch]);
 
   return <>{children}</>;

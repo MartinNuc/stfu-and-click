@@ -7,9 +7,13 @@ export const InvitePals = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
     if (copied) {
-      setTimeout(() => setCopied(false), 1500);
+      timeout = setTimeout(() => setCopied(false), 1500);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [copied]);
 
   function copyToClipboard(element: MouseEvent<HTMLInputElement>) {
@@ -21,18 +25,18 @@ export const InvitePals = () => {
   return (
     <>
       Too lazy to click? Let your pals click for you:
-        <CopyNotificationContainer>
-          <StyledInput
-            onClick={copyToClipboard}
-            readOnly
-            value={wnd.location.href}
-            data-testid="url"
-          />
-          {copied && <CopiedNotification>Copied</CopiedNotification>}
-        </CopyNotificationContainer>
+      <CopyNotificationContainer>
+        <StyledInput
+          onClick={copyToClipboard}
+          readOnly
+          value={wnd.location.href}
+          data-testid="url"
+        />
+        {copied && <CopiedNotification>Copied</CopiedNotification>}
+      </CopyNotificationContainer>
     </>
-  )
-}
+  );
+};
 
 const StyledInput = styled(Input)`
   margin-left: 0.5rem;
