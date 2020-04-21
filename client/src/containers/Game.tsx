@@ -7,7 +7,7 @@ import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
 import { InvitePals } from 'components/InvitePals';
 import { ClickRaceButton } from 'components/ClickRaceButton';
 import { MyScoreBoard } from 'components/MyScoreBoard';
-import { initializeGame } from 'store/gameSlice';
+import { joinTeam } from 'store/gameSlice';
 import { useParams } from 'react-router-dom';
 import { fetchLeaderboard } from 'store/leaderboardSlice';
 import { selectTeamsAround } from 'store/selectors';
@@ -21,7 +21,7 @@ export const Game = () => {
 
   useEffect(() => {
     dispatch(fetchLeaderboard());
-    dispatch(initializeGame(myTeam));
+    dispatch(joinTeam(myTeam));
   }, [myTeam, dispatch]);
 
   return (

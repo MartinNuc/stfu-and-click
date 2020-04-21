@@ -17,9 +17,8 @@ const slice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    initializeGame(state, action: PayloadAction<Team>) {
+    joinTeam(state, action: PayloadAction<Team>) {
       state.myTeam = action.payload;
-      state.session = generateRandomUuid();
     },
     clickSuccess(state, action: PayloadAction<number>) {
       state.myClicks = action.payload;
@@ -30,7 +29,7 @@ const slice = createSlice({
   },
 });
 
-export const { initializeGame, clickSuccess, clickFailed } = slice.actions;
+export const { joinTeam, clickSuccess, clickFailed } = slice.actions;
 export default slice.reducer;
 
 export const click = (): AppThunk => async (dispatch, getState) => {

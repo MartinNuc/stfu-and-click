@@ -1,6 +1,6 @@
 import reducer, {
   initialState,
-  initializeGame,
+  joinTeam,
   clickSuccess,
   clickFailed,
   click,
@@ -17,9 +17,9 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('Leaderboard slide', () => {
   describe('Reducers', () => {
-    test('it should initialize game', () => {
+    test('it should be able to join team', () => {
       const team = 'Bulanci';
-      const nextState = reducer(initialState, initializeGame(team));
+      const nextState = reducer(initialState, joinTeam(team));
       expect(nextState.myTeam).toBe(team);
     });
 

@@ -6,11 +6,16 @@ import { TopTen } from 'containers/TopTen';
 import { JoinGameForm } from 'components/JoinGameForm';
 import { Redirect } from 'react-router-dom';
 import { Team } from 'stfu-and-click-shared/src/team';
+import { useDispatch } from 'react-redux';
+import { joinTeam, click } from 'store/gameSlice';
 
 export const JoinGame = () => {
+  const dispatch = useDispatch();
   const [team, setTeam] = useState<Team | null>(null);
   
   function joinGame(team: string) {
+    dispatch(joinTeam(team));
+    dispatch(click());
     setTeam(team);
   }
 
