@@ -6,7 +6,7 @@ import { fetchLeaderboard as apiFetchLeaderboard } from 'api';
 type Leaderboard = LeaderboardEntry[];
 
 const initialState = {
-  error: '',
+  error: null as string | null,
   isLoading: false,
   leaderboard: [] as Leaderboard,
 };

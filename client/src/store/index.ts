@@ -1,7 +1,7 @@
 import { configureStore, combineReducers, ThunkAction, Action } from '@reduxjs/toolkit';
 import leaderboardReducer from './leaderboardSlice';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   leaderboard: leaderboardReducer
 });
 export type RootState = ReturnType<typeof rootReducer>

@@ -1,19 +1,38 @@
-import React, { FC, ReactElement, ComponentType } from 'react';
+import React from 'react';
 import { Theme } from './Theme';
-import { render, RenderOptions, RenderResult } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import store from '../store';
+import store, { RootState, rootReducer } from '../store';
+import { configureStore, DeepPartial } from '@reduxjs/toolkit';
 
-const AllTheProviders: FC = ({ children }) => (
-  <Provider store={store}>
-    <Theme>{children}</Theme>
-  </Provider>
-);
+type EnhancedOptions = Parameters<typeof render>[1] & {
+  initialState?: DeepPartial<RootState>;
+  store?: typeof store;
+};
+
+type RenderResultWithStore = RenderResult & { store: typeof store };
+
 const customRender = (
-  ui: ReactElement,
-  options: Omit<RenderOptions, 'queries'> = {},
-): RenderResult =>
-  render(ui, { wrapper: AllTheProviders as ComponentType, ...options });
+  ui: React.ReactElement,
+  {
+    initialState,
+    store = configureStore({
+      reducer: rootReducer,
+      preloadedState: initialState,
+    }),
+    ...remainingOptions
+  }: EnhancedOptions = {},
+): RenderResultWithStore => ({
+  store,
+  ...render(ui, {
+    wrapper: ({ children }) => (
+      <Provider store={store}>
+        <Theme>{children}</Theme>
+      </Provider>
+    ),
+    ...remainingOptions,
+  }),
+});
 
 // re-export everything
 export * from '@testing-library/react';
