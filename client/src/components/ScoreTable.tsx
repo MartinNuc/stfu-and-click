@@ -3,10 +3,17 @@ import styled from 'styled-components';
 import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard';
 import { delimitThousands } from 'utils/thousands-delimiter';
 import { Team } from 'stfu-and-click-shared/src/team';
+import { motion } from 'framer-motion';
 
 type Props = {
   scores: LeaderboardEntry[];
   emphasizedTeam?: Team | null;
+};
+
+const springAnimation = {
+  type: 'spring',
+  damping: 20,
+  stiffness: 600,
 };
 
 export const ScoreTable: FC<Props> = ({ scores, emphasizedTeam }) => {
@@ -60,9 +67,13 @@ type ScoreRowProps = {
 };
 
 const ScoreRow: FC<ScoreRowProps> = ({ children, emphasized }) =>
-  emphasized ? <EmphasizedRow>{children}</EmphasizedRow> : <tr>{children}</tr>;
+  emphasized ? (
+    <EmphasizedRow layoutTransition={springAnimation}>{children}</EmphasizedRow>
+  ) : (
+    <motion.tr layoutTransition={springAnimation}>{children}</motion.tr>
+  );
 
-const EmphasizedRow = styled.tr`
+const EmphasizedRow = styled(motion.tr)`
   &&& {
     background-color: ${({ theme }) => theme.primary};
     color: white;
