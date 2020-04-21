@@ -9,7 +9,7 @@ type TeamScoreUpdate = {
   clicks: number;
 };
 
-const initialState = {
+export const initialState = {
   error: null as string | null,
   isLoading: false,
   leaderboard: [] as Leaderboard,
@@ -34,36 +34,11 @@ const slice = createSlice({
       state,
       { payload: { clicks, team } }: PayloadAction<TeamScoreUpdate>,
     ) {
-      // when team is not in our leaderboard lets add it to the end.
-      // This may happen when we receive score update by socket.io in future
-      if (state.leaderboard.findIndex(item => item.team === team) === -1) {
-        state.leaderboard.push({
-          team,
-          clicks,
-          order: state.leaderboard.length
-        });
-      }
-
-      // update score
-      state.leaderboard = state.leaderboard.map((item) => {
-        if (item.team === team) {
-          return {
-            ...item,
-            clicks,
-          };
-        } else {
-          return item;
-        }
-      });
-
-      // sort by score
-      state.leaderboard.sort((a, b) => b.clicks - a.clicks);
-
-      // update order
-      state.leaderboard = state.leaderboard.map((item, index) => ({
-        ...item,
-        order: index + 1,
-      }));
+      state.leaderboard = updateTeamInLeaderboard(
+        state.leaderboard,
+        team,
+        clicks,
+      );
     },
   },
 });
@@ -87,3 +62,41 @@ export const fetchLeaderboard = (): AppThunk => async (dispatch) => {
   }
   dispatch(fetchLeaderboardSucess(leaderboard));
 };
+
+function updateTeamInLeaderboard(
+  leaderboard: Leaderboard,
+  team: Team,
+  clicks: number,
+) {
+  // when team is not in our leaderboard lets add it to the end.
+  // This may happen when we receive score update by socket.io in future
+  if (leaderboard.findIndex((item) => item.team === team) === -1) {
+    leaderboard.push({
+      team,
+      clicks,
+      order: leaderboard.length,
+    });
+  }
+
+  // update score
+  leaderboard = leaderboard.map((item) => {
+    if (item.team === team) {
+      return {
+        ...item,
+        clicks,
+      };
+    } else {
+      return item;
+    }
+  });
+
+  // sort by score
+  leaderboard.sort((a, b) => b.clicks - a.clicks);
+
+  // update order
+  leaderboard = leaderboard.map((item, index) => ({
+    ...item,
+    order: index + 1,
+  }));
+  return leaderboard;
+}
