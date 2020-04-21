@@ -10,6 +10,12 @@ import _ from '../datasource';
 import redis from '../db/redis';
 import http from 'http';
 
+jest.mock('../websockets', () =>
+  jest.fn().mockReturnValue({
+    emit: jest.fn(),
+  }),
+);
+
 describe('REST:stfu and click button test', () => {
   let server: http.Server;
 
