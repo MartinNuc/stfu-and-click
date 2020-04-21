@@ -29,8 +29,7 @@ export const Game = () => {
   return (
     <Container>
       <Heading>
-        <span>Clicking for team</span>
-        <Bold>Prokop</Bold>
+        Clicking for team <TeamName>Prokop</TeamName>
       </Heading>
       <InviteContainer>
         Too lazy to click? Let your pals click for you:
@@ -61,12 +60,14 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Heading = styled.span`
+const Heading = styled.h1`
+  text-align: center;
   margin: 2rem;
   font-size: 2rem;
+  font-weight: normal;
 `;
 
-const Bold = styled.span`
+const TeamName = styled.span`
   font-weight: bold;
 `;
 
@@ -75,6 +76,7 @@ const InviteContainer = styled.div`
   align-items: center;
   margin: 1rem 0;
   align-self: center;
+  font-style: italic;
 `;
 
 const StyledInput = styled(Input)`
