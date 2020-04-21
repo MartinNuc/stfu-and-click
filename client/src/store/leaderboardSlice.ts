@@ -1,10 +1,9 @@
-import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
+import { Leaderboard } from 'stfu-and-click-shared/src/leaderboard';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './index';
 import { fetchLeaderboard as apiFetchLeaderboard } from 'api';
 import { Team } from 'stfu-and-click-shared/src/team';
 
-type Leaderboard = LeaderboardEntry[];
 type TeamScoreUpdate = {
   team: Team;
   clicks: number;

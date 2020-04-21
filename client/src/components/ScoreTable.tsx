@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
+import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard';
 import { delimitThousands } from 'utils/thousands-delimiter';
 import { Team } from 'stfu-and-click-shared/src/team';
 

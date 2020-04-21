@@ -2,7 +2,7 @@ import React from 'react';
 import { render, getNodeText } from 'utils/test-utils';
 
 import { ScoreTable } from './ScoreTable';
-import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
+import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard';
 
 const scores: LeaderboardEntry[] = [
   {
