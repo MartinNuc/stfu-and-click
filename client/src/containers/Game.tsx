@@ -1,52 +1,39 @@
-import React, { useState, MouseEvent, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
-import { Input } from 'atoms/Input';
 import { ScoreTable } from 'components/ScoreTable';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
 import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
-import wnd from 'utils/window';
+import { InvitePals } from 'components/InvitePals';
+import { ClickRaceButton } from 'components/ClickRaceButton';
+import { MyScoreBoard } from 'components/MyScoreBoard';
+import { initializeGame } from 'store/gameSlice';
+import { useParams } from 'react-router-dom';
 
 export const Game = () => {
-  const [copied, setCopied] = useState(false);
+  const dispatch = useDispatch();
   const scores = useSelector(
     (state: RootState) => state.leaderboard.leaderboard,
   );
-  const myTeam = useSelector((state: RootState) => state.game.myTeam);
+  const { team: myTeam } = useParams<{ team: string }>();
 
   useEffect(() => {
-    if (copied) {
-      setTimeout(() => setCopied(false), 1500);
-    }
-  }, [copied]);
-
-  function copyToClipboard(element: MouseEvent<HTMLInputElement>) {
-    element.currentTarget.select();
-    wnd.document.execCommand('copy');
-    setCopied(true);
-  }
+    dispatch(initializeGame(myTeam));
+  }, [myTeam, dispatch]);
 
   return (
     <Container>
       <Heading>
-        Clicking for team <TeamName>Prokop</TeamName>
+        Clicking for team <TeamName data-testid="my-team">{myTeam}</TeamName>
       </Heading>
       <InviteContainer>
-        Too lazy to click? Let your pals click for you:
-        <CopyNotificationContainer>
-          <StyledInput
-            onClick={copyToClipboard}
-            readOnly
-            value={wnd.location.href}
-            data-testid="url"
-          />
-          {copied && <CopiedNotification>Copied</CopiedNotification>}
-        </CopyNotificationContainer>
+        <InvitePals />
       </InviteContainer>
 
       <BlueBorderedContainer>
-        click button Current score
+        <ClickRaceButton />
+        <MyScoreBoard />
         <ScoreTable scores={scores} emphasizedTeam={myTeam} />
         <InviteContainer>
           <Quote>Want to be the top? STFU and click!</Quote>
@@ -78,26 +65,4 @@ const InviteContainer = styled.div`
   margin: 1rem 0;
   align-self: center;
   font-style: italic;
-`;
-
-const StyledInput = styled(Input)`
-  margin-left: 0.5rem;
-`;
-
-const CopyNotificationContainer = styled.div`
-  position: relative;
-`;
-
-const CopiedNotification = styled.div`
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  position: absolute;
-  top: -50%;
-  left: 50%;
-  margin: 0 auto;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  font-size: 0.8rem;
-  padding: 0.2rem 0.5rem;
 `;
