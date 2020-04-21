@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
 import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
-import { TopTen } from 'containers/TopTen';
+import { TopTen } from 'components/TopTen';
 import { JoinGameForm } from 'components/JoinGameForm';
 import { Redirect } from 'react-router-dom';
 import { Team } from 'stfu-and-click-shared/src/team';

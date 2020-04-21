@@ -4,8 +4,8 @@ import { Route } from 'react-router-dom';
 
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
-import { JoinGame } from 'containers/JoinGame';
-import { Game } from 'containers/Game';
+import { JoinGame } from 'pages/JoinGame';
+import { Game } from 'pages/Game';
 
 function App() {
   return (

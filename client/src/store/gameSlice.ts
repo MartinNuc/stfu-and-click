@@ -18,6 +18,14 @@ const slice = createSlice({
   initialState,
   reducers: {
     joinTeam(state, action: PayloadAction<Team>) {
+      /**
+       * Generate new session when joining new team. This avoids higher 
+       * your clicks than team clicks because server stores relation 
+       * between click, user and team separated.
+       */
+      if (state.myTeam !== action.payload) {
+        state.session = generateRandomUuid();
+      }
       state.myTeam = action.payload;
     },
     clickSuccess(state, action: PayloadAction<number>) {
