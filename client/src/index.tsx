@@ -7,17 +7,20 @@ import * as serviceWorker from './serviceWorker';
 import { Theme } from './utils/Theme';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { SocketTeamUpdateWatcher } from 'components/SocketTeamUpdateWatcher';
 
 import store from 'store';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <Theme>
-          <App />
-        </Theme>
-      </Router>
+      <SocketTeamUpdateWatcher>
+        <Router>
+          <Theme>
+            <App />
+          </Theme>
+        </Router>
+      </SocketTeamUpdateWatcher>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
