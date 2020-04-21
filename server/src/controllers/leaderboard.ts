@@ -1,4 +1,4 @@
-import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
+import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard';
 import datasource from '../datasource';
 import { TeamClickRecord } from '../datasource/schema';
 
