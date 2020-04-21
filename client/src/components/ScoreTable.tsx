@@ -2,12 +2,14 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
 import { delimitThousands } from 'utils/thousands-delimiter';
+import { Team } from 'stfu-and-click-shared/src/team';
 
 type Props = {
   scores: LeaderboardEntry[];
+  emphasizedTeam?: Team | null;
 };
 
-export const ScoreTable: FC<Props> = ({ scores }) => {
+export const ScoreTable: FC<Props> = ({ scores, emphasizedTeam }) => {
   return (
     <Table>
       <thead>
@@ -19,7 +21,7 @@ export const ScoreTable: FC<Props> = ({ scores }) => {
       </thead>
       <TableBodyWithAlternatingRows>
         {scores.map((score) => (
-          <tr key={score.order}>
+          <ScoreRow key={score.team} emphasized={score.team === emphasizedTeam}>
             <BodyCell data-testid="order" isNumber={true}>
               {score.order}
             </BodyCell>
@@ -27,7 +29,7 @@ export const ScoreTable: FC<Props> = ({ scores }) => {
             <BodyCell data-testid="clicks" isNumber={true}>
               {delimitThousands(score.clicks)}
             </BodyCell>
-          </tr>
+          </ScoreRow>
         ))}
         {!scores.length && (
           <tr>
@@ -53,8 +55,23 @@ const Table = styled.table`
   }
 `;
 
+type ScoreRowProps = {
+  emphasized?: boolean;
+};
+
+const ScoreRow: FC<ScoreRowProps> = ({ children, emphasized }) =>
+  emphasized ? <EmphasizedRow>{children}</EmphasizedRow> : <tr>{children}</tr>;
+
+const EmphasizedRow = styled.tr`
+  &&& {
+    background-color: ${({ theme }) => theme.primary};
+    color: white;
+    font-size: 2rem;
+  }
+`;
+
 const HeaderCell = styled.th<{ isNumber?: boolean }>`
-  color: ${(props) => props.theme.subtleText};
+  color: ${({ theme }) => theme.subtleText};
   text-transform: uppercase;
   font-size: 0.7rem;
   padding-left: 2rem;
@@ -77,9 +94,9 @@ const RowOverWholeTable = styled(BodyCell).attrs(() => ({
 
 const TableBodyWithAlternatingRows = styled.tbody`
   & > tr:nth-child(odd) {
-    background-color: ${(props) => props.theme.backgroundPrimary};
+    background-color: ${({ theme }) => theme.backgroundPrimary};
   }
   & > tr:nth-child(even) {
-    background-color: ${(props) => props.theme.backgroundSecondary};
+    background-color: ${({ theme }) => theme.backgroundSecondary};
   }
 `;

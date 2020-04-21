@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getNodeText } from 'utils/test-utils'
+import { render, getNodeText } from 'utils/test-utils';
 
 import { ScoreTable } from './ScoreTable';
 import { LeaderboardEntry } from 'stfu-and-click-shared/src/leaderboard-entry';
@@ -45,4 +45,15 @@ test('it should display empty table', () => {
   const { queryAllByTestId, getByTestId } = render(<ScoreTable scores={[]} />);
   expect(queryAllByTestId('order').length).toBe(0);
   expect(getByTestId('empty')).toBeInTheDocument();
+});
+
+test('it should display emphasized team with blue background', () => {
+  const { getByText } = render(
+    <ScoreTable scores={scores} emphasizedTeam={'team 2'} />,
+  );
+  const emphasizedRow = getByText('team 2').parentElement;
+  const notEmphasizedRow = getByText('team 3').parentElement;
+
+  expect(emphasizedRow).toHaveStyle(`background-color: rgb(236, 243, 253)`);
+  expect(notEmphasizedRow).toHaveStyle(`background-color: rgb(220, 233, 248)`);
 });
