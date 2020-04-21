@@ -10,6 +10,7 @@ import { ClickRaceButton } from 'components/ClickRaceButton';
 import { MyScoreBoard } from 'components/MyScoreBoard';
 import { initializeGame } from 'store/gameSlice';
 import { useParams } from 'react-router-dom';
+import { fetchLeaderboard } from 'store/leaderboardSlice';
 
 export const Game = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const Game = () => {
   const { team: myTeam } = useParams<{ team: string }>();
 
   useEffect(() => {
+    dispatch(fetchLeaderboard());
     dispatch(initializeGame(myTeam));
   }, [myTeam, dispatch]);
 
