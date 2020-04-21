@@ -4,9 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 import { delimitThousands } from 'utils/thousands-delimiter';
 import { createSelector } from 'reselect';
-
-const getMyTeamName = (state: RootState) => state.game.myTeam;
-const getLeaderboard = (state: RootState) => state.leaderboard.leaderboard;
+import { getMyTeamName, getLeaderboard } from 'store/selectors';
 
 const scoresSelector = createSelector(
   [getMyTeamName, getLeaderboard],

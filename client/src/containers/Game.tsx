@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Quote } from 'components/Quote';
 import { ScoreTable } from 'components/ScoreTable';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'store';
 import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
 import { InvitePals } from 'components/InvitePals';
 import { ClickRaceButton } from 'components/ClickRaceButton';
@@ -11,12 +10,13 @@ import { MyScoreBoard } from 'components/MyScoreBoard';
 import { initializeGame } from 'store/gameSlice';
 import { useParams } from 'react-router-dom';
 import { fetchLeaderboard } from 'store/leaderboardSlice';
+import { selectTeamsAround } from 'store/selectors';
+
+const teamsAroundMeSelector = selectTeamsAround(7);
 
 export const Game = () => {
   const dispatch = useDispatch();
-  const scores = useSelector(
-    (state: RootState) => state.leaderboard.leaderboard,
-  );
+  const scores = useSelector(teamsAroundMeSelector);
   const { team: myTeam } = useParams<{ team: string }>();
 
   useEffect(() => {
