@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
@@ -24,14 +24,12 @@ function App() {
     <Layout>
       <Header data-testid="header" />
       <Content>
-        <Switch>
-          <Route path="/">
-            <JoinGame />
-          </Route>
-          <Route path="/:team">
-            <Game />
-          </Route>
-        </Switch>
+        <Route exact path="/">
+          <JoinGame />
+        </Route>
+        <Route path="/:team">
+          <Game />
+        </Route>
       </Content>
       <Footer data-testid="footer" />
     </Layout>
