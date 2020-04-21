@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
@@ -24,14 +24,14 @@ function App() {
     <Layout>
       <Header data-testid="header" />
       <Content>
-        <Router>
+        <Switch>
           <Route path="/">
             <JoinGame />
           </Route>
           <Route path="/:team">
             <Game />
           </Route>
-        </Router>
+        </Switch>
       </Content>
       <Footer data-testid="footer" />
     </Layout>

@@ -4,9 +4,12 @@ import { render, RenderResult } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store, { RootState, rootReducer } from '../store';
 import { configureStore, DeepPartial } from '@reduxjs/toolkit';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory, History } from 'history';
 
 type EnhancedOptions = Parameters<typeof render>[1] & {
   initialState?: DeepPartial<RootState>;
+  history?: History<any>,
   store?: typeof store;
 };
 
@@ -16,6 +19,7 @@ const customRender = (
   ui: React.ReactElement,
   {
     initialState,
+    history = createMemoryHistory(),
     store = configureStore({
       reducer: rootReducer,
       preloadedState: initialState,
@@ -27,7 +31,9 @@ const customRender = (
   ...render(ui, {
     wrapper: ({ children }) => (
       <Provider store={store}>
-        <Theme>{children}</Theme>
+        <Router history={history}>
+          <Theme>{children}</Theme>
+        </Router>
       </Provider>
     ),
     ...remainingOptions,
