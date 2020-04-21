@@ -5,3 +5,5 @@ export type LeaderboardEntry = {
   team: Team;
   clicks: number;
 }
+
+export type Leaderboard = LeaderboardEntry[];
