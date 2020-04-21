@@ -11,7 +11,7 @@ import { createSelector } from 'reselect';
 
 const topTenSelector = createSelector(
   (state: RootState) => state.leaderboard.leaderboard,
-  leaderboard => leaderboard.filter((_, index) => index < 10)
+  (leaderboard) => leaderboard.filter((_, index) => index < 10),
 );
 
 export const TopTen: FC = (props) => {
@@ -33,8 +33,11 @@ export const TopTen: FC = (props) => {
       <FlagContainer>
         <FlagTitle title="TOP 10 Clickers" />
       </FlagContainer>
-      <ScoreTable scores={leaderboard}></ScoreTable>
-      {isLoading && <Spinner />}
+      {isLoading ? (
+        <Spinner data-testid="spinner" />
+      ) : (
+        <ScoreTable scores={leaderboard}></ScoreTable>
+      )}
       {error && <Error>{error}</Error>}
     </Container>
   );
