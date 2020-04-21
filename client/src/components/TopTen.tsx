@@ -22,10 +22,7 @@ export const TopTen: FC = (props) => {
   );
 
   useEffect(() => {
-    async function fetchData() {
-      await dispatch(fetchLeaderboard());
-    }
-    fetchData();
+    dispatch(fetchLeaderboard());
   }, [dispatch]);
 
   return (
