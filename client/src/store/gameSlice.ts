@@ -1,12 +1,12 @@
 import { Team } from 'stfu-and-click-shared/src/team';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { generateRandomUuid } from 'uuid';
+import { v4 as generateRandomUuid } from 'uuid';
 
 const initialState = {
   error: null as string | null,
   myClicks: 0,
   teamClicks: 0,
-  myTeam: '' as Team,
+  myTeam: null as Team | null,
   session: generateRandomUuid(),
 };
 
@@ -16,6 +16,7 @@ const slice = createSlice({
   reducers: {
     initializeGame(state, action: PayloadAction<Team>) {
       state.myTeam = action.payload;
+      state.session = generateRandomUuid();
     },
     click(state) {
       state.myClicks++;

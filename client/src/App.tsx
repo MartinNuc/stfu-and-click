@@ -7,18 +7,6 @@ import { Footer } from 'components/Footer';
 import { JoinGame } from 'containers/JoinGame';
 import { Game } from 'containers/Game';
 
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: center;
-`;
-
-const Content = styled.div`
-  max-width: 500px;
-  margin: 0 2rem;
-`;
-
 function App() {
   return (
     <Layout>
@@ -35,5 +23,18 @@ function App() {
     </Layout>
   );
 }
+
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+`;
+
+const Content = styled.div`
+  max-width: 600px;
+  width: 100%;
+  margin: 0 2rem;
+`;
 
 export default App;
