@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
 import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
 import { TopTen } from 'containers/TopTen';
 import { JoinGameForm } from 'components/JoinGameForm';
+import { Redirect } from 'react-router-dom';
+import { Team } from 'stfu-and-click-shared/src/team';
 
 export const JoinGame = () => {
+  const [team, setTeam] = useState<Team | null>(null);
+  
   function joinGame(team: string) {
-    console.log(team);
+    setTeam(team);
+  }
+
+  if (team) {
+    return <Redirect to={team} />;
   }
 
   return (
