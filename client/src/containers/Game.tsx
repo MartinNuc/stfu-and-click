@@ -13,6 +13,7 @@ export const Game = () => {
   const scores = useSelector(
     (state: RootState) => state.leaderboard.leaderboard,
   );
+  const myTeam = useSelector((state: RootState) => state.game.myTeam);
 
   useEffect(() => {
     if (copied) {
@@ -33,7 +34,7 @@ export const Game = () => {
       </Heading>
       <InviteContainer>
         Too lazy to click? Let your pals click for you:
-        <CopyNotificationContainer style={{position: 'relative'}}>
+        <CopyNotificationContainer>
           <StyledInput
             onClick={copyToClipboard}
             readOnly
@@ -46,7 +47,7 @@ export const Game = () => {
 
       <BlueBorderedContainer>
         click button Current score
-        <ScoreTable scores={scores} />
+        <ScoreTable scores={scores} emphasizedTeam={myTeam} />
         <InviteContainer>
           <Quote>Want to be the top? STFU and click!</Quote>
         </InviteContainer>
@@ -84,7 +85,7 @@ const StyledInput = styled(Input)`
 `;
 
 const CopyNotificationContainer = styled.div`
-  position:relative;
+  position: relative;
 `;
 
 const CopiedNotification = styled.div`
