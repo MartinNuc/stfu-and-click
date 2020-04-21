@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Button } from 'atoms/Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
@@ -12,11 +13,13 @@ export const ClickRaceButton = () => {
   }
 
   return (
-      <StyledButton onClick={handleClick}>CLICK!</StyledButton>
-  )
-}
+    <StyledButton onClick={handleClick} whileTap={{ scale: 0.9 }}>
+      CLICK!
+    </StyledButton>
+  );
+};
 
-const StyledButton = styled(Button)`
+const StyledButton = motion.custom(styled(Button)`
   padding: 2rem 2rem;
   font-size: 2rem;
-`;
+`);
