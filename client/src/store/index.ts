@@ -1,8 +1,10 @@
 import { configureStore, combineReducers, ThunkAction, Action } from '@reduxjs/toolkit';
 import leaderboardReducer from './leaderboardSlice';
+import gameReducer from './gameSlice';
 
 export const rootReducer = combineReducers({
-  leaderboard: leaderboardReducer
+  leaderboard: leaderboardReducer,
+  game: gameReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>
 
