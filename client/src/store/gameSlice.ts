@@ -6,7 +6,7 @@ import { v4 as generateRandomUuid } from 'uuid';
 import { click as apiClick } from 'api';
 import { updateTeamScore } from './leaderboardSlice';
 
-const initialState = {
+export const initialState = {
   error: null as string | null,
   myClicks: 0,
   myTeam: null as Team | null,
@@ -36,18 +36,22 @@ export default slice.reducer;
 export const click = (): AppThunk => async (dispatch, getState) => {
   let response: ClickResponse;
   const { session, myTeam } = getState().game;
+  if (!myTeam) {
+    throw new Error('Team is required to participate.');
+  }
+  const params: ClickRequest = {
+    session,
+    team: myTeam,
+  };
+
+  // make api call
   try {
-    if (!myTeam) {
-      throw new Error('Team is required to participate.');
-    }
-    const params: ClickRequest = {
-      session,
-      team: myTeam,
-    };
     response = await apiClick(params);
-    dispatch(clickSuccess(response.yourClicks));
-    dispatch(updateTeamScore({ team: myTeam, clicks: response.teamClicks }));
   } catch (err) {
     dispatch(clickFailed(err.toString()));
+    return;
   }
+
+  dispatch(clickSuccess(response.yourClicks));
+  dispatch(updateTeamScore({ team: myTeam, clicks: response.teamClicks }));
 };
