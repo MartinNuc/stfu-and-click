@@ -17,7 +17,12 @@ The goal is to create a game where users click a button to reach the higest scor
 - ✅ [Redux-toolkit](http://redux-toolkit.js.org)
 - ✅ [Framer](https://www.framer.com/) for animations
 - ✅ [react-testling-library](https://testing-library.com/)
-- ❌ [Redux-Saga]https://redux-saga.js.org - used only Thunk at the end 🙁
+- ✅ [socket.io](https://socket.io) for game state updates. This is the only network related thing I added to the REST API from the exercies.
+- ❌ [Redux-Saga]https://redux-saga.js.org - used only Thunk at the end 🙁 but I want to try them out in the future. They could help with the order of click requests because with Thunk the response order may not match how requests were being fired.
+
+## Caveat
+
+Since server doesn't hold combination of team-session-clicks after user joins the same team it starts counting his clicks from the beggining although he might already have a score from the past. Solution could be to store random fingerprint in the local storage and generate session based on this fingerprint and team.
 
 ## Docker
 
@@ -42,6 +47,6 @@ Shared module contains Typescript models which are shared between client and ser
 
 `yarn client start` to start client
 
-`yarn build` to build server+client into dist folder. Client is being placed into `public` folder in server so it can be deployed together. Express is configured to load client app except for `/api` requests.
+`yarn build` to build server+client into dist folder. Client is being placed into `public` folder in server so it can be deployed together. Express is configured to serve the React app and listen for `/api` requests.
 
 `yarn server test` to run tests (local redis must be running for integration tests)
