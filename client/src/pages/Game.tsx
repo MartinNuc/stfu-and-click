@@ -48,6 +48,7 @@ export const Game: FC = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 1rem;
 `;
 
 const Heading = styled.h1`
@@ -62,9 +63,6 @@ const TeamName = styled.span`
 `;
 
 const InviteContainer = styled.div`
-  display: flex;
-  align-items: center;
   margin: 1rem 0;
   align-self: center;
-  font-style: italic;
 `;

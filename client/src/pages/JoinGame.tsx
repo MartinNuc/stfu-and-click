@@ -46,6 +46,7 @@ export const JoinGame: FC = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 1rem;
 `;
 
 const QuoteContainer = styled.div`

@@ -23,7 +23,7 @@ export const InvitePals = () => {
   }
 
   return (
-    <>
+    <Container>
       Too lazy to click? Let your pals click for you:
       <CopyNotificationContainer>
         <StyledInput
@@ -34,12 +34,26 @@ export const InvitePals = () => {
         />
         {copied && <CopiedNotification>Copied</CopiedNotification>}
       </CopyNotificationContainer>
-    </>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  font-style: italic;
+  flex-direction: column;
+  @media (min-width: ${({theme}) => theme.breakpoints.phone}) {
+    flex-direction: row;
+  }
+`;
+
 const StyledInput = styled(Input)`
-  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  @media (min-width: ${({theme}) => theme.breakpoints.phone}) {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
 `;
 
 const CopyNotificationContainer = styled.div`

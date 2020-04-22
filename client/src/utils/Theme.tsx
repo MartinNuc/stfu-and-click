@@ -7,6 +7,9 @@ const theme = {
   backgroundPrimary: '#dce9f8',
   backgroundSecondary: '#ecf3fd',
   subtleText: '#9a9a9a',
+  breakpoints: {
+    phone: '768px',
+  },
 };
 
 export const Theme: FC = ({ children }) => {

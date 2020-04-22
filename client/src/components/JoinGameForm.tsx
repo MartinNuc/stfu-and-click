@@ -44,6 +44,10 @@ export const JoinGameForm: FC<Props> = ({ onJoin }) => {
 const Form = styled.form`
   display: flex;
   margin: 0.5rem;
+  flex-direction: column;
+  @media (min-width: ${({theme}) => theme.breakpoints.phone}) {
+    flex-direction: row;
+  }
 `;
 
 const FormGroup = styled.div`
