@@ -4,7 +4,7 @@ import { Quote } from 'components/Quote';
 
 export const Footer: FC = (props) => {
   return (
-    <StyledFooter {...props}>
+    <StyledFooter>
       <Quote>
         If you don't like this page, it's{' '}
         <a

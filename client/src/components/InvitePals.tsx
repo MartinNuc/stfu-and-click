@@ -1,9 +1,9 @@
-import React, { useState, MouseEvent, useEffect } from 'react';
+import React, { useState, MouseEvent, useEffect, FC } from 'react';
 import styled from 'styled-components';
 import { Input } from 'atoms/Input';
 import wnd from 'utils/window';
 
-export const InvitePals = () => {
+export const InvitePals: FC = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {

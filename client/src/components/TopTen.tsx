@@ -26,7 +26,7 @@ export const TopTen: FC = (props) => {
   }, [dispatch]);
 
   return (
-    <Container {...props}>
+    <Container>
       <FlagContainer>
         <FlagTitle title="TOP 10 Clickers" />
       </FlagContainer>

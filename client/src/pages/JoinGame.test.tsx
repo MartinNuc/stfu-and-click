@@ -5,9 +5,9 @@ import { JoinGame } from './JoinGame';
 
 test('it should redirect to game route after filling the team name', () => {
   const history = createMemoryHistory();
-  const { getByTestId } = render(<JoinGame />, { history });
+  const { getByPlaceholderText, getByText } = render(<JoinGame />, { history });
   expect(history.location.pathname).toBe('/');
-  fireEvent.change(getByTestId('team'), { target: { value: 'Applifters' } });
-  fireEvent.click(getByTestId('submit'));
+  fireEvent.change(getByPlaceholderText('Your mom'), { target: { value: 'Applifters' } });
+  fireEvent.click(getByText('Click!'));
   expect(history.location.pathname).toBe('/Applifters');
 });

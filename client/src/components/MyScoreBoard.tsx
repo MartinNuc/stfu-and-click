@@ -11,7 +11,7 @@ const scoresSelector = createSelector(
   (myTeam, leaderboard) => leaderboard.find((item) => item.team === myTeam),
 );
 
-export const MyScoreBoard = () => {
+export const MyScoreBoard: FC = () => {
   const { myClicks } = useSelector((state: RootState) => state.game);
   const myTeamScore = useSelector(scoresSelector);
 

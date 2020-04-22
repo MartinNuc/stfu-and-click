@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 export const Header: FC = (props) => {
   return (
-    <StyledHeader {...props}>
-      <PageName to="/">STFUANDCLICK.COM</PageName>
+    <StyledHeader>
+      <HomeLink to="/">STFUANDCLICK.COM</HomeLink>
     </StyledHeader>
   );
 };
@@ -22,7 +22,7 @@ const StyledHeader = styled.header`
   align-self: stretch;
 `;
 
-const PageName = styled(Link)`
+const HomeLink = styled(Link)`
   color: white;
   text-decoration: none;
 `;

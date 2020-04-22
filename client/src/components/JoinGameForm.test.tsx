@@ -4,9 +4,9 @@ import { JoinGameForm } from './JoinGameForm';
 
 test(`it should emit team's name when submitted`, async () => {
   const onJoin = jest.fn();
-  const { getByTestId } = render(<JoinGameForm onJoin={onJoin} />);
-  const input = getByTestId('team');
-  const submitButton = getByTestId('submit');
+  const { getByPlaceholderText, getByText } = render(<JoinGameForm onJoin={onJoin} />);
+  const input = getByPlaceholderText('Your mom');
+  const submitButton = getByText('Click!');
   fireEvent.change(input, { target: { value: 'Bubaci' } });
   fireEvent.click(submitButton);
   expect(onJoin).toHaveBeenCalledWith('Bubaci');
@@ -14,9 +14,9 @@ test(`it should emit team's name when submitted`, async () => {
 
 test(`it should not allow empty team name`, async () => {
   const onJoin = jest.fn();
-  const { getByTestId } = render(<JoinGameForm onJoin={onJoin} />);
-  const input = getByTestId('team');
-  const submitButton = getByTestId('submit');
+  const { getByTestId, getByPlaceholderText, getByText } = render(<JoinGameForm onJoin={onJoin} />);
+  const input = getByPlaceholderText('Your mom');
+  const submitButton = getByText('Click!');
   fireEvent.change(input, { target: { value: '' } });
   fireEvent.click(submitButton);
   expect(getByTestId('error')).not.toBeNull();

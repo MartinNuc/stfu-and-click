@@ -10,7 +10,7 @@ import { Game } from 'pages/Game';
 function App() {
   return (
     <Layout>
-      <Header data-testid="header" />
+      <Header />
       <Content>
         <Route exact path="/">
           <JoinGame />
@@ -19,7 +19,7 @@ function App() {
           <Game />
         </Route>
       </Content>
-      <Footer data-testid="footer" />
+      <Footer />
     </Layout>
   );
 }

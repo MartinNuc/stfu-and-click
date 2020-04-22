@@ -31,12 +31,11 @@ export const JoinGameForm: FC<Props> = ({ onJoin }) => {
           type="text"
           id="team"
           placeholder="Your mom"
-          data-testid="team"
           onChange={(event) => setTeam(event.target.value)}
         ></Input>
         {error && <Error data-testid="error">{error}</Error>}
       </FormGroup>
-      <Button data-testid="submit">Click!</Button>
+      <Button>Click!</Button>
     </Form>
   );
 };
