@@ -1,6 +1,8 @@
 # stfu-and-click
 
 ![Continous deployment](https://github.com/MartinNuc/stfu-and-click/workflows/Continous%20deployment/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ae98316dc9917595e19a/maintainability)](https://codeclimate.com/github/MartinNuc/stfu-and-click/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ae98316dc9917595e19a/test_coverage)](https://codeclimate.com/github/MartinNuc/stfu-and-click/test_coverage)
 
 This a repository for interview challenge for AppLifting.
 

@@ -24,6 +24,7 @@
     "uuid": "7.0.3"
   },
   "scripts": {
+    "coverage": "yarn test --coverage --watchAll=false",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "coverageReporters": ["lcov"]
   },
   "devDependencies": {
     "@types/axios": "0.14.0",

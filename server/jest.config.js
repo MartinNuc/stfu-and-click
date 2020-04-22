@@ -3,4 +3,5 @@ module.exports = {
   testEnvironment: 'node',
   coveragePathIgnorePatterns: ['/node_modules/'],
   runner: 'groups',
+  coverageReporters: [['lcov', { projectRoot: '..' }]],
 };

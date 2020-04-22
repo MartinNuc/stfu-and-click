@@ -38,7 +38,7 @@ jobs:
       redis:
         image: redis
         ports:
-        - 6379:6379
+          - 6379:6379
         options: --entrypoint redis-server
     strategy:
       matrix:
@@ -67,7 +67,15 @@ jobs:
         run: yarn client test
       - name: Server tests
         run: yarn server test
-
+      - name: Coverage to Codeclimate
+        uses: MartinNuc/codeclimate-action@v2.5.10
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
+        with:
+          coverageLocations: |
+            ${{github.workspace}}/client/coverage/lcov.info:lcov
+            ${{github.workspace}}/server/coverage/lcov.info:lcov
+            
   build:
     runs-on: ubuntu-latest
     needs: dependencies
