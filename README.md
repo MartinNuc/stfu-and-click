@@ -8,6 +8,10 @@ This a repository for interview challenge for AppLifting.
 
 The goal is to create a game where users click a button to reach the higest score. Players may group into teams to achieve higher score together.
 
+## Demo
+
+http://nucik-stfu-and-click.herokuapp.com
+
 ## What I wanted to try out during this challenge
 
 - ✅ Redis as a storage although it's better for caching
@@ -16,11 +20,14 @@ The goal is to create a game where users click a button to reach the higest scor
 - ✅ Github Actions with dependency caching
 - ✅ deploy to Heroku using Docker container from Github Actions
 - ✅ docker compose to run app locally (not for development)
+- ✅ use Github actions to publish code coverage to the [Codeclimate](http://codeclimate.com). Had to fix [issue](https://github.com/paambaati/codeclimate-action/issues/153).
 - ✅ [Redux-toolkit](http://redux-toolkit.js.org)
 - ✅ [Framer](https://www.framer.com/) for animations
 - ✅ [react-testling-library](https://testing-library.com/)
 - ✅ [socket.io](https://socket.io) for game state updates. This is the only network related thing I added to the REST API from the exercies.
-- ❌ [Redux-Saga]https://redux-saga.js.org - used only Thunk at the end 🙁 but I want to try them out in the future. They could help with the order of click requests because with Thunk the response order may not match how requests were being fired.
+- ❌ [Redux-Saga](https://redux-saga.js.org) - used only Thunk at the end 🙁 but I want to try them out in the future. They could help with the order of click requests because with Thunk the response order may not match how requests were being fired.
+- ⏳ [Cypress](https://www.cypress.io) - I will write e2e tests some day 🙂
+- ⏳ [GraphQL](https://graphql.org) also in the future I would like to replace socket.io and REST with GraphQL and it's subscriptions.
 
 ## Caveat
 
