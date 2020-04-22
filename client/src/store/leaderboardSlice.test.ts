@@ -10,7 +10,6 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import axios from 'axios';
 
-jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 const leaderboard: Leaderboard = [

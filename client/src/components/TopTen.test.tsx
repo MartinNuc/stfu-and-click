@@ -4,7 +4,6 @@ import { TopTen } from './TopTen';
 import { fetchLeaderboardSucess } from 'store/leaderboardSlice';
 import axios from 'axios';
 
-jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 test('it shows loading spinner until data loads', () => {
