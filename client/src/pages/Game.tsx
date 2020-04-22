@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
 import { ScoreTable } from 'components/ScoreTable';
@@ -14,7 +14,7 @@ import { selectTeamsAround } from 'store/selectors';
 
 const teamsAroundMeSelector = selectTeamsAround(7);
 
-export const Game = () => {
+export const Game: FC = () => {
   const dispatch = useDispatch();
   const scores = useSelector(teamsAroundMeSelector);
   const { team: myTeam } = useParams<{ team: string }>();

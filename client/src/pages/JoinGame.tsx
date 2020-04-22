@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import styled from 'styled-components';
 import { Quote } from 'components/Quote';
 import { BlueBorderedContainer } from 'atoms/BlueBordredContainer';
@@ -9,7 +9,7 @@ import { Team } from 'stfu-and-click-shared/src/team';
 import { useDispatch } from 'react-redux';
 import { joinTeam, click } from 'store/gameSlice';
 
-export const JoinGame = () => {
+export const JoinGame: FC = () => {
   const dispatch = useDispatch();
   const [team, setTeam] = useState<Team | null>(null);
   
