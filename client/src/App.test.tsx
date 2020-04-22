@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'utils/test-utils';
 import App from './App';
 
-test('renders header and footer', () => {
+test('renders header', () => {
   const { getByTestId } = render(<App />);
   const header = getByTestId('header');
   expect(header).toBeInTheDocument();
