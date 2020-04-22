@@ -22,4 +22,5 @@ export const ClickRaceButton = () => {
 const StyledButton = motion.custom(styled(Button)`
   padding: 2rem 2rem;
   font-size: 2rem;
+  touch-action: manipulation;
 `);
