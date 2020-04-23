@@ -58,4 +58,6 @@ Shared module contains Typescript models which are shared between client and ser
 
 `yarn build` to build server+client into dist folder. Client is being placed into `public` folder in server so it can be deployed together. Express is configured to serve the React app and listen for `/api` requests.
 
-`yarn server test` to run tests (local redis must be running for integration tests)
+`yarn client test` to run client tests
+
+`yarn server test` to run server tests (local redis must be running for BE integration tests)

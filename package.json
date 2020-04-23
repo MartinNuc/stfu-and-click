@@ -20,10 +20,10 @@
     ]
   },
   "scripts": {
-    "clear": "yarn rimraf dist",
     "build": "yarn client build && yarn server build && yarn clear && yarn build:merge",
     "build:merge": "cpr server/dist dist && cpr client/build dist/public",
     "coverage": "yarn client coverage ; yarn server coverage",
+    "clear": "yarn rimraf dist",
     "client": "yarn workspace stfu-and-click-client",
     "server": "yarn workspace stfu-and-click-server",
     "shared": "yarn workspace stfu-and-click-shared"
