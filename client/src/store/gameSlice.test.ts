@@ -14,21 +14,21 @@ import axios from 'axios';
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe('Leaderboard slide', () => {
+describe('Game slice', () => {
   describe('Reducers', () => {
-    test('it should be able to join team', () => {
+    it('should be able to join team', () => {
       const team = 'Bulanci';
       const nextState = reducer(initialState, joinTeam(team));
       expect(nextState.myTeam).toBe(team);
     });
 
-    test('it should update click count after sending click to the server', () => {
+    it('should update click count after sending click to the server', () => {
       const newClickCount = 10;
       const nextState = reducer(initialState, clickSuccess(newClickCount));
       expect(nextState.myClicks).toBe(newClickCount);
     });
 
-    test('it should set error state when the click request fails', () => {
+    it('should set error state when the click request fails', () => {
       const err = new Error('Network error');
       const nextState = reducer(initialState, clickFailed(err.toString()));
       expect(nextState.error).toBe('Error: Network error');
@@ -36,7 +36,7 @@ describe('Leaderboard slide', () => {
   });
 
   describe('Actions', () => {
-    test('it should send click to the server', async () => {
+    it('should send click to the server', async () => {
       const serverResponse = {
         yourClicks: 25,
         teamClicks: 50,

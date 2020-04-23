@@ -25,15 +25,15 @@ const leaderboard: Leaderboard = [
   },
 ];
 
-describe('Leaderboard slide', () => {
+describe('Leaderboard slice', () => {
   describe('Reducers', () => {
-    test('it should mark loading state', () => {
+    it('should mark loading state', () => {
       expect(initialState.isLoading).toBe(false);
       const nextState = reducer(initialState, startLoading());
       expect(nextState.isLoading).toBe(true);
     });
 
-    test('it should update a team which is already present in the leaderboard', () => {
+    it('should update a team which is already present in the leaderboard', () => {
       const state: typeof initialState = {
         ...initialState,
         leaderboard,
@@ -54,7 +54,7 @@ describe('Leaderboard slide', () => {
       });
     });
 
-    test('it should add a team which missing in the leaderboard', () => {
+    it('should add a team which missing in the leaderboard', () => {
       const state: typeof initialState = {
         ...initialState,
         leaderboard,
@@ -81,7 +81,7 @@ describe('Leaderboard slide', () => {
     });
   });
   describe('Actions', () => {
-    test('it should fetch the leaderboard from server', async () => {
+    it('should fetch the leaderboard from server', async () => {
       mockedAxios.get.mockResolvedValue({ data: leaderboard });
       const expectedActions = [
         {

@@ -9,7 +9,7 @@ import { createMemoryHistory, History } from 'history';
 
 type EnhancedOptions = Parameters<typeof render>[1] & {
   initialState?: DeepPartial<RootState>;
-  history?: History<any>,
+  history?: History<any>;
   store?: typeof store;
 };
 

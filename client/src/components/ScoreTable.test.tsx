@@ -22,38 +22,44 @@ const scores: LeaderboardEntry[] = [
   },
 ];
 
-test('it should display scores as table', () => {
-  const { queryAllByTestId } = render(<ScoreTable scores={scores} />);
-  expect(queryAllByTestId('order').map((el) => getNodeText(el))).toEqual([
-    '1',
-    '2',
-    '3',
-  ]);
-  expect(queryAllByTestId('team').map((el) => getNodeText(el))).toEqual([
-    'bulanci',
-    'team 2',
-    'team 3',
-  ]);
-  expect(queryAllByTestId('clicks').map((el) => getNodeText(el))).toEqual([
-    '50 043 243',
-    '30 483',
-    '5 434',
-  ]);
-});
+describe('ScoreTable', () => {
+  it('should display scores as table', () => {
+    const { queryAllByTestId } = render(<ScoreTable scores={scores} />);
+    expect(queryAllByTestId('order').map((el) => getNodeText(el))).toEqual([
+      '1',
+      '2',
+      '3',
+    ]);
+    expect(queryAllByTestId('team').map((el) => getNodeText(el))).toEqual([
+      'bulanci',
+      'team 2',
+      'team 3',
+    ]);
+    expect(queryAllByTestId('clicks').map((el) => getNodeText(el))).toEqual([
+      '50 043 243',
+      '30 483',
+      '5 434',
+    ]);
+  });
 
-test('it should display empty table', () => {
-  const { queryAllByTestId, getByTestId } = render(<ScoreTable scores={[]} />);
-  expect(queryAllByTestId('order').length).toBe(0);
-  expect(getByTestId('empty')).toBeInTheDocument();
-});
+  it('should display empty table', () => {
+    const { queryAllByTestId, getByTestId } = render(
+      <ScoreTable scores={[]} />,
+    );
+    expect(queryAllByTestId('order').length).toBe(0);
+    expect(getByTestId('empty')).toBeInTheDocument();
+  });
 
-test('it should display emphasized team with blue background', () => {
-  const { getByText } = render(
-    <ScoreTable scores={scores} emphasizedTeam={'team 2'} />,
-  );
-  const emphasizedRow = getByText('team 2').parentElement;
-  const notEmphasizedRow = getByText('team 3').parentElement;
+  it('should display emphasized team with blue background', () => {
+    const { getByText } = render(
+      <ScoreTable scores={scores} emphasizedTeam={'team 2'} />,
+    );
+    const emphasizedRow = getByText('team 2').parentElement;
+    const notEmphasizedRow = getByText('team 3').parentElement;
 
-  expect(emphasizedRow).toHaveStyle(`background-color: rgb(236, 243, 253)`);
-  expect(notEmphasizedRow).toHaveStyle(`background-color: rgb(220, 233, 248)`);
+    expect(emphasizedRow).toHaveStyle(`background-color: rgb(236, 243, 253)`);
+    expect(notEmphasizedRow).toHaveStyle(
+      `background-color: rgb(220, 233, 248)`,
+    );
+  });
 });
